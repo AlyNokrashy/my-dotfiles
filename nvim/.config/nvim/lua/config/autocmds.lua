@@ -1,14 +1,15 @@
--- Disable autoformat for cpp files
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "cpp" },
-  callback = function()
-    vim.b.autoformat = false
-  end,
-})
+  -- [[ Basic Autocommands ]]
+  vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function() vim.hl.on_yank() end,
+  })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  callback = function()
-    vim.opt_local.spell = false
-  end,
-})
+  vim.api.nvim_create_autocmd('TermOpen', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+    callback = function()
+      vim.opt.number = false
+      vim.opt.relativenumber = false
+    end,
+  })

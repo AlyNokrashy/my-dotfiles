@@ -120,8 +120,7 @@
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 5,
-    "on-click": "kitty -e ~/.local/bin/powermenu",
-    "on-click-right": "notify-send -u low \"$(omarchy-battery-status)\"",
+    "on-click": "bash ~/.local/bin/powermenu",
     "states": {
       "warning": 20,
       "critical": 10
