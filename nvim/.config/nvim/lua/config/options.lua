@@ -1,4 +1,3 @@
-
   vim.o.number = true
 
   vim.o.relativenumber = true
@@ -67,6 +66,7 @@
   vim.o.scrolloff = 10
   -- set cursor as block
   vim.opt.guicursor = 'n-v-c:block'
+  vim.opt.termguicolors = true
   -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
   -- instead raise a dialog asking if you wish to save the current file(s)
   -- See `:help 'confirm'`
