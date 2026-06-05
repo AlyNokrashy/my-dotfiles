@@ -5,7 +5,7 @@
 @define-color right-module-color  #cba6f7;
 @define-color clock-color  #f38ba8;
 @define-color cpu-h-color #f38ba8;
-@define-color cpu-m-color #fab387;
+@define-color cpu-m-color #f5c2e7;
 @define-color cpu-l-color #b4befe;
 
 * {
@@ -134,7 +134,7 @@
 #custom-runcat {
     font-family: 'runcat';
     font-size: 30px;
-    color: @cat-color;
+    /* color: @cat-color; */
 }
 
 #custom-runcat.low {
