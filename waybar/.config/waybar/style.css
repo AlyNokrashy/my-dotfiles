@@ -1,8 +1,14 @@
 @import "/home/aly/.cache/wal/colors-waybar.css";
 
+/* catppuccin colors */
+@define-color workspace-color #74c7ec;
+@define-color cat-color  #b4befe;
+@define-color right-module-color  #cba6f7;
+@define-color clock-color  #f38ba8;
+
 * {
   background-color: @background;
-  color: @color6;
+  /* color: @color6; */
 
   border: none;
   border-radius: 0;
@@ -11,8 +17,22 @@
   font-size: 17px;
 }
 
+
+#cpu, 
+#bluetooth,
+#network,
+#battery,
+#pulseaudio {
+  color: @right-module-color;
+}
+
+#clock {
+  color: @clock-color;
+}
+
 .modules-left {
   margin-left: 8px;
+
 }
 
 .modules-right {
@@ -24,10 +44,12 @@
   padding: 0 6px;
   margin: 0 1.5px;
   min-width: 9px;
+  color: @workspace-color;
 }
 
 #workspaces button.empty {
   opacity: 0.5;
+  color: @workspace-color;
 }
 
 #cpu,
@@ -67,6 +89,9 @@
 .left #workspaces button, .right #workspaces button {
   padding: 6px 0;
   margin: 1.5px 0;
+
+  color: @workspace-color;
+
 }
 
 .left #cpu, .right #cpu,
@@ -107,6 +132,7 @@
 #custom-runcat {
     font-family: 'runcat';
     font-size: 30px;
+    color: @cat-color;
 }
 
 /* #custom-runcat.low { */
