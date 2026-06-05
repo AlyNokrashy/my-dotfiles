@@ -2,9 +2,11 @@
 
 /* catppuccin colors */
 @define-color workspace-color #74c7ec;
-@define-color cat-color  #b4befe;
 @define-color right-module-color  #cba6f7;
 @define-color clock-color  #f38ba8;
+@define-color cpu-h-color #f38ba8;
+@define-color cpu-m-color #fab387;
+@define-color cpu-l-color #b4befe;
 
 * {
   background-color: @background;
@@ -135,17 +137,17 @@
     color: @cat-color;
 }
 
-/* #custom-runcat.low { */
-/*     font-family: 'runcat'; */
-/*     color: green; */
-/* } */
-/**/
-/* #custom-runcat.medium { */
-/*     font-family: 'runcat'; */
-/*     color: blue; */
-/* } */
-/**/
-/* #custom-runcat.high { */
-/*     font-family: 'runcat'; */
-/*     color: red; */
-/* } */
+#custom-runcat.low {
+    font-family: 'runcat';
+    color: @cpu-l-color;
+}
+
+#custom-runcat.medium {
+    font-family: 'runcat';
+    color: @cpu-m-color;
+}
+
+#custom-runcat.high {
+    font-family: 'runcat';
+    color: @cpu-h-color;
+}
