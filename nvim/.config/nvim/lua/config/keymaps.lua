@@ -21,7 +21,7 @@ vim.keymap.set('n', '<space>st', function()
   vim.cmd.term()
   vim.cmd.wincmd 'J'
   vim.api.nvim_win_set_height(0, 10)
-end)
+end, {desc = 'Open Terminal'})
 
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
 vim.keymap.set('i', 'kj', '<Esc>', { desc = 'Exit insert mode' })
