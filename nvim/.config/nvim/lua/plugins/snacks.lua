@@ -48,6 +48,11 @@ vim.keymap.set(
     picker.lines {
       layout = {
         preset = 'dropdown',
+        layout = {
+          row = 4,
+          width = 0.30,
+          height = 0.50,
+        }
       },
     }
   end,
