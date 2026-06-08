@@ -171,5 +171,8 @@ alias vo='NVIM_APPNAME="nvim-old" nvim'
 alias cp="/usr/local/bin/advcp -g"
 alias mv="/usr/local/bin/advmv -g"
 
+# eza
+alias lss="eza --color=always --long --git --no-filesize --no-user --no-time --no-permissions"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
