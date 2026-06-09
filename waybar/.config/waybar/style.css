@@ -134,20 +134,20 @@
 #custom-runcat {
     font-family: 'runcat';
     font-size: 30px;
-    /* color: @cat-color; */
-}
-
-#custom-runcat.low {
-    font-family: 'runcat';
     color: @cpu-l-color;
 }
 
-#custom-runcat.medium {
-    font-family: 'runcat';
-    color: @cpu-m-color;
-}
-
-#custom-runcat.high {
-    font-family: 'runcat';
-    color: @cpu-h-color;
-}
+/* #custom-runcat.low { */
+/*     font-family: 'runcat'; */
+/*     color: @cpu-l-color; */
+/* } */
+/**/
+/* #custom-runcat.medium { */
+/*     font-family: 'runcat'; */
+/*     color: @cpu-m-color; */
+/* } */
+/**/
+/* #custom-runcat.high { */
+/*     font-family: 'runcat'; */
+/*     color: @cpu-h-color; */
+/* } */
