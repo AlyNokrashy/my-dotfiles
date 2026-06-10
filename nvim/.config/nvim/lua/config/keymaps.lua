@@ -2,7 +2,7 @@
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<C-c>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('x', 'p', [["_dP]], { desc = 'Paste over selectio withou losing yanked text' })
+vim.keymap.set('x', 'p', [["_dP]], { desc = 'Paste over selection without losing yanked text' })
 vim.keymap.set('i', '<C-c>', '<Esc>')
 -- move selected lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'moves lines down in visual selection' })
