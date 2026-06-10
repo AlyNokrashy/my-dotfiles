@@ -1,16 +1,13 @@
 --    :lua vim.pack.update(nil, { offline = true })
 --    :lua vim.pack.update()
---
 vim.pack.add { 'https://github.com/nvim-mini/mini.nvim' }
 vim.pack.add { { src = 'https://github.com/folke/snacks.nvim' } }
-vim.pack.add { 'https://github.com/stevearc/oil.nvim', 'https://github.com/nvim-mini/mini.icons' }
+vim.pack.add { 'https://github.com/stevearc/oil.nvim' }
 vim.pack.add { 'https://github.com/folke/tokyonight.nvim' }
 vim.pack.add { 'https://github.com/sainnhe/gruvbox-material' }
 vim.pack.add { { src = 'https://github.com/catppuccin/nvim', name = 'catppuccin' } }
 vim.pack.add { { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.*' } }
-vim.pack.add { 'https://github.com/nvim-tree/nvim-web-devicons' }
 vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
-vim.pack.add { 'https://github.com/folke/flash.nvim' }
 vim.pack.add { 'https://github.com/lewis6991/gitsigns.nvim' }
 vim.pack.add { 'https://github.com/rafamadriz/friendly-snippets' }
 vim.pack.add { 'https://github.com/NMAC427/guess-indent.nvim' }
