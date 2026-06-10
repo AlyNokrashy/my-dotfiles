@@ -13,7 +13,13 @@ miniIcons.setup()
 miniSurround.setup()
 miniPairs.setup()
 miniCmd.setup()
-miniNotify.setup()
+
+-- Mini.Notify
+miniNotify.setup({
+  lsp_progress = {
+    enable = false,
+  }
+})
 
 -- Mini.jump2d
 miniJump.setup()
