@@ -1,0 +1,18 @@
+hl.on("hyprland.start", function()
+	hl.exec_cmd(Terminal)
+	hl.exec_cmd("/usr/lib/gvfsd")
+	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+	hl.exec_cmd("waybar")
+	hl.exec_cmd("udiskie")
+	hl.exec_cmd("walker --gapplication-service")
+	hl.exec_cmd("elephant")
+	hl.exec_cmd("mkdir -p " .. os.getenv("HOME") .. "/.cache/awww")
+	hl.exec_cmd("awww-daemon >/dev/null 2>&1")
+	hl.exec_cmd("wal -R > /dev/null 2>&1")
+	-- stores text data
+	hl.exec_cmd("wl-paste --type text --watch cliphist store")
+	-- stores image data
+	hl.exec_cmd("wl-paste --type image --watch cliphist store")
+	hl.exec_cmd("swaync")
+	hl.exec_cmd('bash -c "eval $(ssh-agent) && ssh-add ~/.ssh/id_ed25519"')
+end)

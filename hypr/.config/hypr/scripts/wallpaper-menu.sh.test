@@ -1,0 +1,19 @@
+#!/bin/bash
+
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
+
+if pgrep -x wofi >/dev/null; then
+    pkill wofi
+    exit
+fi
+
+selected=$(find "$WALLPAPER_DIR" -type f | wofi --dmenu --prompt "Select wallpaper")
+
+[ -z "$selected" ] && exit
+
+awww img "$selected" \
+    --transition-type center \
+    --transition-step 20 \
+    --transition-fps 60
+
+
