@@ -22,7 +22,6 @@
     "battery"
   ],
   "hyprland/workspaces": {
-    "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
       "default": "",
