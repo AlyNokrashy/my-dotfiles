@@ -1,43 +1,41 @@
-vim.pack.add {
-  {
-    src = 'https://github.com/folke/snacks.nvim',
-  },
-}
+local snacks = require('snacks')
 
-require('snacks').setup {
+snacks.setup {
   picker = { enabled = true },
 }
 
-local picker = Snacks.picker
-vim.keymap.set('n', '<leader>sh', function() picker.help() end, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sk', function() picker.keymaps() end, { desc = '[S]earch [K]eymaps' })
-vim.keymap.set('n', '<leader>sf', function() picker.smart() end, { desc = '[S]earch [F]iles' })
-vim.keymap.set({ 'n', 'v' }, '<leader>sw', function() picker.grep_word() end, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', function() picker.grep() end, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', function() picker.diagnostics() end, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', function() picker.resume() end, { desc = '[S]earch [R]esume' })
-vim.keymap.set('n', '<leader>s.', function() picker.recent() end, { desc = '[S]earch Recent Files ("." for repeat)' })
-vim.keymap.set('n', '<leader>sc', function() picker.commands() end, { desc = '[S]earch [C]ommands' })
-vim.keymap.set('n', '<leader><leader>', function() picker.buffers() end, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>sa', function() picker.files { hidden = true, ignored = true } end, { desc = '[S]earch [F]iles: Hidden & Ignored' })
+local picker = snacks.picker
+
+vim.keymap.set('n', '<leader>fh', function() picker.help() end, { desc = 'Find Help' })
+vim.keymap.set('n', '<leader>fk', function() picker.keymaps() end, { desc = 'Find Keymaps' })
+vim.keymap.set('n', '<leader>ff', function() picker.smart() end, { desc = 'Find Files' })
+vim.keymap.set({ 'n', 'v' }, '<leader>fw', function() picker.grep_word() end, { desc = 'Find Word' })
+vim.keymap.set('n', '<leader>fg', function() picker.grep() end, { desc = 'Grep' })
+vim.keymap.set('n', '<leader>fd', function() picker.diagnostics() end, { desc = 'Find Diagnostics' })
+vim.keymap.set('n', '<leader>fr', function() picker.resume() end, { desc = 'Resume Find' })
+vim.keymap.set('n', '<leader>f.', function() picker.recent() end, { desc = 'Find Recent Files' })
+vim.keymap.set('n', '<leader>fc', function() picker.commands() end, { desc = 'Find Commands' })
+vim.keymap.set('n', '<leader><leader>', function() picker.buffers() end, { desc = 'Find Existing Buf' })
+vim.keymap.set('n', '<leader>fa', function() picker.files { hidden = true, ignored = true } end, { desc = 'Find Files [a/h]' })
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('snacks-lsp-attach', { clear = true }),
   callback = function(event)
     local buf = event.buf
 
-    vim.keymap.set('n', 'grr', function() picker.lsp_references() end, { buffer = buf, desc = '[G]oto [R]eferences' })
+    vim.keymap.set('n', 'grr', function() picker.lsp_references() end, { buffer = buf, desc = 'Goto Reference' })
 
-    vim.keymap.set('n', 'gri', function() picker.lsp_implementations() end, { buffer = buf, desc = '[G]oto [I]mplementation' })
+    vim.keymap.set('n', 'gri', function() picker.lsp_implementations() end, { buffer = buf, desc = 'Goto Implementation' })
 
-    vim.keymap.set('n', 'grd', function() picker.lsp_definitions() end, { buffer = buf, desc = '[G]oto [D]efinition' })
+    vim.keymap.set('n', 'grd', function() picker.lsp_definitions() end, { buffer = buf, desc = 'Goto Definition' })
 
     vim.keymap.set('n', 'gO', function() picker.lsp_symbols() end, { buffer = buf, desc = 'Open Document Symbols' })
 
     vim.keymap.set('n', 'gW', function() picker.lsp_workspace_symbols() end, { buffer = buf, desc = 'Open Workspace Symbols' })
 
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = buf, desc = '[R]e[n]ame Symbol' })
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = buf, desc = 'Rename Symbol' })
 
-    vim.keymap.set('n', 'grt', function() picker.lsp_type_definitions() end, { buffer = buf, desc = '[G]oto [T]ype Definition' })
+    vim.keymap.set('n', 'grt', function() picker.lsp_type_definitions() end, { buffer = buf, desc = 'Goto Type Definition' })
   end,
 })
 
@@ -47,23 +45,21 @@ vim.keymap.set(
   function()
     picker.lines {
       layout = {
-        preset = 'dropdown',
-        layout = {
+          preset = 'dropdown',
           row = 4,
           width = 0.30,
           height = 0.50,
-        }
       },
     }
   end,
-  { desc = '[/] Fuzzily search in current buffer' }
+  { desc = 'Find in Current Buf' }
 )
 
-vim.keymap.set('n', '<leader>s/', function()
+vim.keymap.set('n', '<leader>f/', function()
   picker.grep_buffers {
     title = 'Live Grep in Open Files',
   }
-end, { desc = '[S]earch [/] in Open Files' })
+end, { desc = 'Find in Open Files' })
 
 -- Shortcut for searching your Neovim configuration files
-vim.keymap.set('n', '<leader>sn', function() picker.files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
+vim.keymap.set('n', '<leader>fn', function() picker.files { cwd = vim.fn.stdpath 'config' } end, { desc = 'Find Config' })

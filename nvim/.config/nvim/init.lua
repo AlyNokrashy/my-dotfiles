@@ -1,5 +1,4 @@
 vim.loader.enable()
-
 require('vim._core.ui2').enable {}
 
 vim.g.mapleader = ' '
@@ -13,7 +12,6 @@ require 'config.plugins'
 
 require 'plugins.oil'
 require 'plugins.gitsigns'
-require 'plugins.which_key'
 require 'plugins.treesitter'
 require 'plugins.luasnip'
 require 'plugins.conform'
@@ -23,10 +21,8 @@ require 'plugins.flash'
 require 'plugins.todo_comments'
 require 'plugins.colorscheme'
 require 'plugins.guess_indent'
-require 'plugins.devicons'
 require 'plugins.lsp'
 require 'plugins.mini'
-require 'plugins.telescope'
 require 'plugins.friendly_snippets'
 require 'plugins.snacks'
 require 'plugins.highlight_colors'

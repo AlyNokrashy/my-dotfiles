@@ -1,26 +1,9 @@
-vim.pack.add { 'https://github.com/folke/flash.nvim' }
 require('flash').setup {}
 
 vim.keymap.set({ 'n', 'x', 'o' }, 'zk', function() require('flash').jump() end, { desc = 'Flash' })
 vim.keymap.set({ 'n', 'x', 'o' }, 'zK', function() require('flash').treesitter() end, { desc = 'Flash Treesitter' })
 
 --     keys = {
---       {
---         "zk",
---         mode = { "n", "x", "o" },
---         function()
---           require("flash").jump()
---         end,
---         desc = "Flash",
---       },
---       {
---         "Zk",
---         mode = { "n", "x", "o" },
---         function()
---           require("flash").treesitter()
---         end,
---         desc = "Flash Treesitter",
---       },
 --       {
 --         "r",
 --         mode = "o",

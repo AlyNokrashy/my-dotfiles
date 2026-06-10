@@ -1,75 +1,53 @@
-  vim.o.number = true
+vim.opt.guicursor = 'n-v-c:block'
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.mouse = 'a'
+vim.o.showmode = false
 
-  vim.o.relativenumber = true
+--tab options
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
-  -- Enable mouse mode, can be useful for resizing splits for example!
-  vim.o.mouse = 'a'
+vim.opt.wrap = false
+vim.opt.smartindent = true
 
-  -- Don't show the mode, since it's already in the status line
-  vim.o.showmode = false
+vim.o.breakindent = true
 
-  --tab options
-  vim.opt.tabstop = 4
-  vim.opt.softtabstop = 4
-  vim.opt.shiftwidth = 4
-  vim.opt.expandtab = true
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand '~/.vim/undodir'
 
-  vim.opt.wrap = false
-  vim.opt.smartindent = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.completeopt = 'menuone,noselect'
 
-  -- Sync clipboard between OS and Neovim.
-  --  Schedule the setting after `UiEnter` because it can increase startup-time.
-  vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+-- Keep signcolumn on by default
+vim.o.signcolumn = 'yes'
 
-  -- Enable break indent
-  vim.o.breakindent = true
+-- Decrease update time
+vim.o.updatetime = 250
 
-  -- Enable undo/redo changes even after closing and reopening a file
-  vim.opt.undofile = true
-  vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
+-- Decrease mapped sequence wait time
+vim.o.timeoutlen = 300
 
-  -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-  vim.o.ignorecase = true
-  vim.o.smartcase = true
+-- Configure how new splits should be opened
+vim.o.splitright = true
+vim.o.splitbelow = true
 
-  -- Keep signcolumn on by default
-  vim.o.signcolumn = 'yes'
+vim.o.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
-  -- Decrease update time
-  vim.o.updatetime = 250
+vim.o.inccommand = 'split'
 
-  -- Decrease mapped sequence wait time
-  vim.o.timeoutlen = 300
+vim.o.cursorline = true
+vim.o.cmdheight = 0
+vim.opt.termguicolors = true
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.o.scrolloff = 15
+vim.opt.termguicolors = true
+vim.o.confirm = true
 
-  -- Configure how new splits should be opened
-  vim.o.splitright = true
-  vim.o.splitbelow = true
-
-  -- Sets how neovim will display certain whitespace characters in the editor.
-  --  See `:help 'list'`
-  --  and `:help 'listchars'`
-  --
-  --  Notice listchars is set using `vim.opt` instead of `vim.o`.
-  --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
-  --   See `:help lua-options`
-  --   and `:help lua-guide-options`
-  vim.o.list = false
-  vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
-  -- Preview substitutions live, as you type!
-  vim.o.inccommand = 'split'
-
-  -- Show which line your cursor is on
-  vim.o.cursorline = true
-  vim.o.cmdheight = 0
-  vim.opt.termguicolors = true
-  -- Minimal number of screen lines to keep above and below the cursor.
-  vim.o.scrolloff = 10
-  -- set cursor as block
-  vim.opt.guicursor = 'n-v-c:block'
-  vim.opt.termguicolors = true
-  -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
-  -- instead raise a dialog asking if you wish to save the current file(s)
-  -- See `:help 'confirm'`
-  vim.o.confirm = true
-
+vim.o.pumblend = 10 -- Make builtin completion menus slightly transparent
+vim.o.pumheight = 10 -- Make popup menu smaller
+vim.o.winblend = 10 -- Make floating windows slightly transparent
