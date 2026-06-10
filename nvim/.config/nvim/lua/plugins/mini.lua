@@ -6,12 +6,20 @@ local miniIcons = require 'mini.icons'
 local miniStatusline = require 'mini.statusline'
 local miniNotify = require 'mini.notify'
 local miniCmd = require 'mini.cmdline'
+local miniJump = require 'mini.jump2d'
+local map = vim.keymap.set
 
 miniIcons.setup()
 miniSurround.setup()
 miniPairs.setup()
 miniCmd.setup()
 miniNotify.setup()
+
+-- Mini.jump2d
+miniJump.setup()
+map('n', 'S', function() MiniJump2d.start() end, {desc = 'Jump to Word'})
+map('n', 's', function() MiniJump2d.start(MiniJump2d.builtin_opts.single_character) end, {desc = "Jump to Character"})
+
 
 -- Mini.ai
 miniAi.setup {
