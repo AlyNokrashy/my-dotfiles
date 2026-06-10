@@ -1,0 +1,8 @@
+@define-color background     {background};
+@define-color base           {color0};
+@define-color border         {color8};
+
+@define-color text           {foreground};
+@define-color selected-text {color0};
+
+@define-color accent         {color1};

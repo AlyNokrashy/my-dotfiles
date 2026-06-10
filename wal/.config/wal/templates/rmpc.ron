@@ -1,0 +1,424 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    default_album_art_path: None,
+    format_tag_separator: " | ",
+    browser_column_widths: [20, 38, 42],
+    background_color: "{background}",
+    modal_backdrop: true,
+    text_color: "{foreground}",
+    header_background_color: "{background}",
+    modal_background_color: "{background}",
+    preview_label_style: (fg: "{color5}"),
+    preview_metadata_group_style: (fg: "{color4}"),
+    song_table_album_separator: None,
+    tab_bar: (
+        active_style: (fg: "{background}", bg: "{color4}", modifiers: "Bold"),
+        inactive_style: (fg: "{color8}", bg: "{background}"),
+    ),
+    highlighted_item_style: (fg: "{color2}", modifiers: "Bold"),
+    current_item_style: (fg: "{background}", bg: "{color4}", modifiers: "Bold"),
+    borders_style: (fg: "{color4}", modifiers: "Bold"),
+    highlight_border_style: (fg: "{color4}"),
+    symbols: (song: "󰝚 ", dir: "󱍙 ", playlist: "󰲸 ", marker: "* ", ellipsis: "...",
+        song_style: (fg: "{color4}"), dir_style: (fg: "{color4}"),
+    ),
+    progress_bar: (
+        symbols: ["", "█", "", "█", "" ],
+        track_style: (fg: "{color0}", bg: "{background}"),
+        elapsed_style: (fg: "{color4}", bg: "{background}"),
+        thumb_style: (fg: "{color4}", bg: "{color0}"),
+        use_track_when_empty: false,
+    ),
+    scrollbar: (
+        symbols: ["┋", "█", "󰄿", "󰄼"],
+        track_style: (fg: "{color4}"),
+        ends_style: (fg: "{color4}"),
+        thumb_style: (fg: "{color4}"),
+    ),
+    song_table_format: [
+        (
+        prop: (kind: Transform(Replace(content: (kind: Sticker("rating")), replacements: [
+            (match:  "0", replace: (kind: Group([(kind: Text("󰎡"),style: (fg: "{color4}"))]))),
+            (match:  "1", replace: (kind: Group([(kind: Text("󰎤"),style: (fg: "{color4}"))]))),
+            (match:  "2", replace: (kind: Group([(kind: Text("󰎧"),style: (fg: "{color4}"))]))),
+            (match:  "3", replace: (kind: Group([(kind: Text("󰎪"),style: (fg: "{color4}"))]))),
+            (match:  "4", replace: (kind: Group([(kind: Text("󰎭"),style: (fg: "{color4}"))]))),
+            (match:  "5", replace: (kind: Group([(kind: Text("󰎱"),style: (fg: "{color4}"))]))),
+            (match:  "6", replace: (kind: Group([(kind: Text("󰎳"),style: (fg: "{color4}"))]))),
+            (match:  "7", replace: (kind: Group([(kind: Text("󰎶"),style: (fg: "{color4}"))]))),
+            (match:  "8", replace: (kind: Group([(kind: Text("󰎹"),style: (fg: "{color4}"))]))),
+            (match:  "9", replace: (kind: Group([(kind: Text("󰎼"),style: (fg: "{color4}"))]))),
+            (match: "10", replace: (kind: Group([(kind: Text("󰽽"),style: (fg: "{color4}"))]))),
+        ])), default: (kind: Text(""), style: (fg: "{color4}"))),
+        width: "3",
+        label: "Rating",
+        alignment: Center,
+            label_prop: (kind: Group([
+                (kind: Text("󰩳"), style: (fg: "{color4}")),
+            ]))
+        ),
+        (
+            prop: (kind: Sticker("playCount"),style: (fg: "{color4}"),
+                 default: (kind: Text(""), style: (fg: "{color4}"))),
+            width: "3",
+            alignment: Left,
+            label: "Playcount",
+            label_prop: (kind: Group([
+                (kind: Text("󰆙"), style: (fg: "{color4}")),
+            ]))
+        ),
+        (
+            prop:(kind: Text("│"), style: (fg: "{color4}")),
+            width: "1",
+            alignment: Center,
+            label: "",
+            label_prop: (kind: Group([
+                (kind: Text("│"), style: (fg: "{color4}")),
+            ]))
+        ),
+        (
+            prop: (kind: Property(Artist), style: (fg: "{color4}"),
+                default: (kind: Text("Unknown Artist"), style: (fg: "{color5}"))),
+            width: "23%",
+            label_prop: (kind: Group([
+                (kind: Text("Artist "), style: (fg: "{foreground}")),
+                (kind: Text(""), style: (fg: "{color4}"))
+            ]))
+        ),
+        (
+            prop: (kind: Property(Title), style: (fg: "{color6}"),
+                default: (kind: Property(Filename), style: (fg: "{foreground}"),
+                    default: (kind: Text("Unknown Title"), style: (fg: "{foreground}")))),
+            width: "36%",
+            label_prop: (kind: Group([
+                (kind: Text("Title "), style: (fg: "{foreground}")),
+                (kind: Text(""), style: (fg: "{color4}"))
+            ]))
+        ),
+        (
+            prop: (kind: Property(Album), style: (fg: "{color4}"),
+                default: (kind: Text("Unknown Album"), style: (fg: "{color5}"))),
+            width: "33%",
+            label_prop: (kind: Group([
+                (kind: Text("Album "), style: (fg: "{foreground}")),
+                (kind: Text("󰀥"), style: (fg: "{color4}"))
+            ]))
+        ),
+        (
+            prop: (kind: Property(Duration), style: (fg: "{color6}"),
+                default: (kind: Text("-"))),
+            width: "8%",
+            alignment: Right,
+            label_prop: (kind: Group([
+                (kind: Text("Length "), style: (fg: "{foreground}")),
+                (kind: Text(" "), style: (fg: "{color4}"))
+            ]))
+        ),
+    ],
+    layout: Split(
+        direction: Vertical, panes: [
+            (size: "7", borders: "NONE", pane: Component("header")),
+            (size: "100%", borders: "NONE", pane: Pane(TabContent)),
+            (size: "3", borders: "NONE", pane: Component("progress_bar")),
+        ]),
+    browser_song_format: [
+        (kind: Group([
+                    (kind: Property(Track)),
+                    (kind: Text(" ")),
+                ])),
+        (kind: Group([
+                    (kind: Property(Artist)),
+                    (kind: Text(" - ")),
+                    (kind: Property(Title)),
+                ]), default: (kind: Property(Filename)))
+    ],
+    level_styles: (
+        info:  (fg: "{color2}", bg: "{background}"),
+        warn:  (fg: "{color3}", bg: "{background}"),
+        error: (fg: "{color1}", bg: "{background}"),
+        debug: (fg: "{color3}", bg: "{background}"),
+        trace: (fg: "{color5}", bg: "{background}"),
+    ),
+    components: {
+        "header_line_0": Split(direction: Horizontal, panes: [
+                    (size: "12%", borders: "NONE", pane: Component("tab_bar_left")),
+                    (size: "76%", borders: "NONE", pane: Pane(Tabs)),
+                    (size: "12%", borders: "NONE", pane: Component("tab_bar_right")),
+            ]),
+        "header_line_1": Split(direction: Horizontal, panes: [
+                            (size: "22%", pane: Component("header_element_1")),
+                            (size: "1", pane: Component("header_element_space")),
+                            (size: "56%", pane: Component("header_element_2")),
+                            (size: "1", pane: Component("header_element_space")),
+                            (size: "22%", pane: Component("header_element_3")),
+                            (size: "2", pane: Component("header_element_right_end")),
+            ]),
+        "header_line_2": Split(direction: Horizontal, panes: [
+                            (size: "22%", pane: Component("header_element_4")),
+                            (size: "1", pane: Component("header_element_space")),
+                            (size: "56%", pane: Component("header_element_5")),
+                            (size: "1", pane: Component("header_element_space")),
+                            (size: "22%", pane: Component("header_element_6")),
+                            (size: "2", pane: Component("header_element_right_end")),
+            ]),
+        "header_line_3": Split(direction: Horizontal, panes: [
+                            (size: "25%", pane: Component("header_element_7")),
+                            (size: "1", pane: Component("header_element_space")),
+                            (size: "50%", pane: Component("header_element_8")),
+                            (size: "1", pane: Component("header_element_space")),
+                            (size: "25%", pane: Component("header_element_9")),
+                            (size: "2", pane: Component("header_element_right_end")),
+
+            ]),
+        "header": Split(
+            direction: Vertical, panes: [
+                (size: "2", borders: "TOP | RIGHT | LEFT", border_symbols: Rounded,
+                    pane: Split(direction: Horizontal, panes: [
+                        (size: "100%", borders: "NONE", pane: Component("header_line_0")),
+                  ])
+                ),
+                (size: "5", borders: "ALL", border_symbols: Library("rounded_collapsed_top"),
+                  pane: Split(direction: Vertical, panes: [
+                     (size: "100%", borders: "NONE", pane: Component("header_line_1")),
+                     (size: "100%", borders: "NONE", pane: Component("header_line_2")),
+                     (size: "100%", borders: "NONE", pane: Component("header_line_3")),
+                  ])
+                ),
+            ]
+        ),
+        "progress_bar": Split(
+            direction: Vertical, panes: [
+              (size: "3", borders: "ALL", border_symbols: Rounded ,
+                  border_title: [
+                         (kind: Property(Status(Elapsed)),style: (fg: "{foreground}")),
+                         (kind: Property(Status(StateV2(playing_label: "─󱦟─", paused_label: "  ", stopped_label: "  "))),
+                             style: (fg: "{color4}", modifiers: "Bold")),
+                         (kind: Property(Status(Duration)),style: (fg: "{foreground}"))
+                      ],
+                  border_title_position: Top,
+                  border_title_alignment: Center,
+                  pane: Split(direction: Vertical, panes: [
+                      (size: "100%", borders: "NONE",pane: Pane(ProgressBar)),
+                ])
+              ),
+            ]
+        ),
+        "tab_bar_left": Split(direction: Horizontal, panes: [
+             (size: "100%", pane: Pane(Property(content: [
+                             (kind: Text(" "), style: (fg: "{color4}", modifiers: "Bold")),
+                             (kind: Property(Status(StateV2(playing_label: "", paused_label: "", stopped_label: ""))),
+                                 style: (fg: "{foreground}")),
+                             (kind: Text("  "), style: (fg: "{color4}", modifiers: "Bold")),
+                             (kind: Property(Song(FileExtension)), style: (fg: "{color8}")),
+                             (kind: Text(" ")),
+                             (kind: Property(Widget(ScanStatus)), style: (fg: "{foreground}", modifiers: "Bold")),
+                             (kind: Text(" ")),
+                             (kind: Property(Status(InputBuffer())), style: (fg: "{color8}")),
+                         ], align: Left))
+             ),
+            ]),
+        "tab_bar_right": Split(direction: Horizontal, panes: [
+                 (size: "100%", pane: Pane(Property(content: [
+                                 (kind: Transform(Replace(content: (kind: Property(Status(Partition)), style: (fg: "{color8}")), replacements: [
+                                     (match:  "default", replace: (kind: Group([(kind: Text(""))]))),
+                                   ]))),
+                                 (kind: Text(" ")),
+                                 (kind: Property(Song(Channels())), style: (fg: "{color8}"),
+                                     default: (kind: Text("0"), style: (fg: "{color8}"))),
+                                 (kind: Text(" 󱡫 "),style: (fg: "{color8}")),
+                                 (kind: Text(" 󱡬"), style: (fg: "{color4}", modifiers: "Bold")),
+                                 (kind: Property(Status(Volume)), style: (fg: "{foreground}")),
+                                 (kind: Text("% "), style: (fg: "{color4}", modifiers: "Bold"))
+                             ], align: Right))
+                 ),
+            ]),
+        "header_element_1": Split(
+            direction: Horizontal,
+            panes: [
+               (size: "100%", pane: Pane(Property(content: [
+                               (kind: Text("[ "),style: (fg: "{color4}", modifiers: "Bold")),
+                               (kind: Property(Status(Elapsed)),style: (fg: "{foreground}")),
+                               (kind: Text(" / "),style: (fg: "{color4}", modifiers: "Bold")),
+                               (kind: Property(Status(Duration)),style: (fg: "{foreground}")),
+                               (kind: Text(" 󱦟"),style: (fg: "{color4}", modifiers: "Bold")),
+                               (kind: Text(" ]"),style: (fg: "{color4}", modifiers: "Bold")),
+                           ], align: Left))
+               ),
+            ]
+        ),
+        "header_element_2": Split(
+            direction: Horizontal,
+            panes: [
+                (size: "100%", pane: Pane(Property(content: [
+                                (kind: Property(Song(Title)), style: (fg: "{foreground}",modifiers: "Bold"),
+                                    default: (kind: Property(Song(Filename)), style: (fg: "{foreground}",modifiers: "Bold"),
+                                        default: (kind: Text("Unknown Title"), style: (fg: "{foreground}",modifiers: "Bold"))))
+                            ], align: Center, scroll_speed: 4))
+                ),
+            ]
+        ),
+        "header_element_3": Split(
+            direction: Horizontal,
+            panes: [
+               (size: "100%", pane: Pane(Property(content: [
+                         (kind: Text("[ "),style: (fg: "{color4}", modifiers: "Bold")),
+                         (kind: Property(Status(RepeatV2(on_label: "", off_label: "",
+                                         on_style: (fg: "{foreground}", modifiers: "Bold"),
+                                         off_style: (fg: "{color8}", modifiers: "Bold"))))),
+                         (kind: Text(" | "),style: (fg: "{color4}", modifiers: "Bold")),
+                         (kind: Property(Status(RandomV2(on_label: "", off_label: "",
+                                         on_style: (fg: "{foreground}", modifiers: "Bold"),
+                                         off_style: (fg: "{color8}", modifiers: "Bold"))))),
+                         (kind: Text(" | "),style: (fg: "{color4}", modifiers: "Bold")),
+                         (kind: Property(Status(ConsumeV2(on_label: "󰮯", off_label: "󰮯", oneshot_label: "󰮯󰇊",
+                                         on_style: (fg: "{foreground}", modifiers: "Bold"),
+                                         off_style: (fg: "{color8}", modifiers: "Bold"))))),
+                         (kind: Text(" | "),style: (fg: "{color4}", modifiers: "Bold")),
+                         (kind: Property(Status(SingleV2(on_label: "󰎤", off_label: "󰎦", oneshot_label: "󰇊", off_oneshot_label: "󱅊",
+                                         on_style: (fg: "{foreground}", modifiers: "Bold"),
+                                         off_style: (fg: "{color8}", modifiers: "Bold"))))),
+                         (kind: Text(" | "),style: (fg: "{color4}", modifiers: "Bold")),
+                         (kind: Property(Status(Crossfade)),style: (fg: "{color8}"),
+                          default: (kind: Text("󰴽"), style: (fg: "{color8}"))),
+                         (kind: Text(" | "),style: (fg: "{color4}", modifiers: "Bold")),
+                         (kind: Transform(Replace(content: (kind: Property(Status(InputMode()))), replacements: [
+                                 (match:  "Normal", replace: (kind: Group([(kind: Text("N"),style: (fg: "{color8}", modifiers: "Bold"))]))),
+                                 (match:  "Insert", replace: (kind: Group([(kind: Text("I"),style: (fg: "{foreground}", modifiers: "Bold"))]))),
+                             ]))),
+                     ], align: Right))
+               ),
+            ]
+        ),
+        "header_element_4": Split(
+            direction: Horizontal,
+            panes: [
+                (size: "100%", pane: Pane(Property(content: [
+                                (kind: Text("[ "),style: (fg: "{color4}", modifiers: "Bold")),
+                                (kind: Property(Song(Bits())),default: (kind: Text(" "), style: (fg: "{foreground}")), style: (fg: "{foreground}")),
+                                (kind: Text(" bit"),style: (fg: "{color4}")),
+                                (kind: Text(" | "),style: (fg: "{color4}", modifiers: "Bold")),
+                                (kind: Property(Status(Bitrate)),default: (kind: Text(" "), style: (fg: "{foreground}")),style: (fg: "{foreground}")),
+                                (kind: Text(" kbps"),style: (fg: "{color4}")),
+                                (kind: Text(" ]"),style: (fg: "{color4}", modifiers: "Bold"))
+                            ], align: Left))
+                ),
+            ]
+        ),
+        "header_element_5": Split(
+            direction: Horizontal,
+            panes: [
+                 (size: "100%", pane: Pane(Property(content: [
+                                 (kind: Property(Song(Artist)), style: (fg: "{color6}"),
+                                     default: (kind: Text("Unknown Artist"), style: (fg: "{color6}"))),
+                                 (kind: Text(" - "), style: (fg: "{foreground}")),
+                                 (kind: Property(Song(Album)),style: (fg: "{color4}" ),
+                                     default: (kind: Text("Unknown Album"), style: (fg: "{color4}")))
+                             ], align: Center, scroll_speed: 4))
+                 ),
+            ]
+        ),
+        "header_element_6": Split(
+            direction: Horizontal,
+            panes: [
+                 (size: "100%", pane: Pane(Property(content: [
+                                 (kind: Text("[ "),style: (fg: "{color4}", modifiers: "Bold")),
+                                 (kind: Property(Status(QueueTimeRemaining(separator: " "))),style: (fg: "{foreground}")),
+                                 (kind: Text(" / "),style: (fg: "{color4}", modifiers: "Bold")),
+                                 (kind: Property(Status(QueueTimeTotal(separator: " "))),style: (fg: "{foreground}")),
+                                 (kind: Text(" 󱎫"),style: (fg: "{color4}", modifiers: "Bold")),
+                             ], align: Right))
+                 ),
+            ]
+        ),
+        "header_element_7": Split(
+            direction: Horizontal,
+            panes: [
+                  (size: "100%", pane: Pane(Property(content: [
+                                  (kind: Text("[ "),style: (fg: "{color4}", modifiers: "Bold")),
+                                  (kind: Property(Song(SampleRate())),default: (kind: Text(" "), style: (fg: "{foreground}")), style: (fg: "{foreground}")),
+                                  (kind: Text(" Hz"),style: (fg: "{color4}")),
+                                  (kind: Text(" | "),style: (fg: "{color4}", modifiers: "Bold")),
+                                  (kind: Property(Song(Position)), style: (fg: "{foreground}"),
+                                      default: (kind: Text("0"), style: (fg: "{foreground}"))),
+                                  (kind: Text(" / "),style: (fg: "{color4}", modifiers: "Bold")),
+                                  (kind: Property(Status(QueueLength())),style: (fg: "{foreground}")),
+                                  (kind: Text(" 󰴍"),style: (fg: "{color4}", modifiers: "Bold")),
+                                  (kind: Text(" ]"),style: (fg: "{color4}", modifiers: "Bold"))
+                              ], align: Left))
+                  ),
+            ]
+        ),
+        "header_element_8": Split(
+            direction: Horizontal,
+            panes: [
+                   (size: "100%", pane: Pane(Property(content: [
+                                   (kind: Property(Song(Other("albumartist"))),style: (fg: "{color8}"),
+                                       default: (kind: Text("Unknown Albumartist"), style: (fg: "{color8}"))),
+                                   (kind: Text(" - "), style: (fg: "{color8}")),
+                                   (kind: Property(Song(Other("composer"))),style: (fg: "{color8}"),
+                                       default: (kind: Text("Unknown Composer"), style: (fg: "{color8}"))),
+                               ], align: Center, scroll_speed: 4))
+                   ),
+            ]
+        ),
+        "header_element_9": Split(
+            direction: Horizontal,
+            panes: [
+                   (size: "100%", pane: Pane(Property(content: [
+                                   (kind: Text("[ "),style: (fg: "{color4}", modifiers: "Bold")),
+                                   (kind: Property(Song(Other("date"))),style: (fg: "{foreground}"),
+                                       default: (kind: Text("Unknown Date"), style: (fg: "{color8}"))),
+                                   (kind: Text(" | "),style: (fg: "{color4}", modifiers: "Bold")),
+                                   (kind: Property(Song(Track)),style: (fg: "{foreground}"),
+                                       default: (kind: Text("0"), style: (fg: "{color8}"))),
+                                   (kind: Text(" / "),style: (fg: "{color4}", modifiers: "Bold")),
+                                   (kind: Property(Song(Disc)),style: (fg: "{foreground}"),
+                                       default: (kind: Text("0"), style: (fg: "{color8}"))),
+                                   (kind: Text(" 󰥠 | "),style: (fg: "{color4}", modifiers: "Bold")),
+                                   (kind: Property(Song(Other("genre"))),style: (fg: "{foreground}"),
+                                       default: (kind: Text("Unknown Genre"), style: (fg: "{color8}"))),
+                               ], align: Right))
+                   ),
+            ]
+        ),
+        "header_element_right_end": Split(
+            direction: Horizontal,
+            panes: [
+               (size: "100%", pane: Pane(Property(content: [
+                               (kind: Text(" ]"),style: (fg: "{color4}", modifiers: "Bold")),
+                           ], align: Right))
+               ),
+            ]
+        ),
+        "header_element_space": Split(
+            direction: Horizontal,
+            panes: [
+               (size: "100%", pane: Pane(Property(content: [
+                               (kind: Text(" ")),
+                           ], align: Right))
+               ),
+            ]
+        ),
+    },
+    cava: (
+        bar_symbols: ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'],
+        bar_width: 1, bar_spacing: 1,
+        bg_color: "{background}",
+        bar_color: Gradient({
+                0:   "{color4}",
+                33:  "{color4}",
+                67:  "{color6}",
+                100: "{color6}",
+            })
+    ),
+    lyrics:(timestamp: false),
+    border_symbol_sets: {
+    "rounded_collapsed_top": (
+        parent: Rounded,
+        top_left: "├",
+        top_right: "┤",
+        ),
+    },
+)
