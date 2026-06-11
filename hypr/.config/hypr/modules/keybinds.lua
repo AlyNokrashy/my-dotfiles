@@ -53,8 +53,16 @@ hl.bind("SUPER + R", hl.dsp.exec_cmd("readest"))
 hl.bind("SUPER + B", hl.dsp.exec_cmd("helium-browser"))
 
 -- OBS Start/Stop
-hl.bind( "SUPER + F10", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$", }))
+hl.bind( "SUPER + F10", hl.dsp.send_shortcut({ mods = "CTRL", key = "S", window = "class:^(com\\.obsproject\\.Studio)$" }))
 
+-- hl.bind(
+--   "SUPER + L",
+--   hl.dsp.send_shortcut({
+--     mods = "CTRL",
+--     key = "L",
+--     window = "class:^(com\\.obsproject\\.Studio)$"
+--   })
+-- )
 -- Workspaces switching
 for i = 1, 9 do
 	hl.bind("SUPER + " .. i, hl.dsp.focus({ workspace = i }))
