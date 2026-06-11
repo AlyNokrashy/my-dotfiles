@@ -30,6 +30,7 @@
 
 #language {
   color: @center-module-color;
+  font-size: 18px;
 }
 #clock {
   color: @center-module-color;
