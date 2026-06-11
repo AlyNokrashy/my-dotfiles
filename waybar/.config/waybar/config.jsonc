@@ -14,13 +14,19 @@
 
   ],
   "modules-right": [
-    "group/tray-expander",
+    "hyprland/language",
     "bluetooth",
     "network",
     "pulseaudio",
     "cpu",
     "battery"
   ],
+  "hyprland/language": {
+      "format": "{}",
+      "format-en": "US",
+      "format-ar": "AR",
+      "on-click": "hyprctl switchxkblayout all next"
+  },
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {

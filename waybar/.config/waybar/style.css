@@ -3,7 +3,7 @@
 /* catppuccin colors */
 @define-color workspace-color #74c7ec;
 @define-color right-module-color  #cba6f7;
-@define-color clock-color  #f38ba8;
+@define-color center-module-color  #f38ba8;
 @define-color cpu-h-color #f38ba8;
 @define-color cpu-m-color #f5c2e7;
 @define-color cpu-l-color #b4befe;
@@ -28,8 +28,11 @@
   color: @right-module-color;
 }
 
+#language {
+  color: @center-module-color;
+}
 #clock {
-  color: @clock-color;
+  color: @center-module-color;
 }
 
 .modules-left {
@@ -56,7 +59,8 @@
 
 #cpu,
 #battery,
-#pulseaudio {
+#pulseaudio,
+#language {
   min-width: 15px;
   margin: 0 7.5px;
 }
