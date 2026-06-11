@@ -4,6 +4,8 @@ vim.o.relativenumber = true
 vim.o.mouse = 'a'
 vim.o.showmode = false
 
+-- vim.opt.windowborder = "rounded"
+
 --tab options
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

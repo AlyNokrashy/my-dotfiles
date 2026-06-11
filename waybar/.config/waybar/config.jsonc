@@ -56,6 +56,8 @@
     "return-type": "json"
   },
   "cpu": {
+    "tooltip": true,
+    // "tooltip-format": "CPU Usage: {usage}%"
     "interval": 5,
     "format": "󰍛",
     "on-click": "kitty --title btop-popup  -e btop",
@@ -64,12 +66,12 @@
   "clock#horizontal": {
     "format": "{:L%A %I:%M}",
     "format-alt": "{:L%d %B W%V %Y}",
-    "tooltip": false,
+    "tooltip": true,
   },
   "clock#vertical": {
     "format": "{:%H\n  —\n%M}",
     "format-alt": "{:L%d %B W%V %Y}",
-    "tooltip": false,
+    "tooltip": true,
   },
   "network": {
     "format-icons": [
@@ -91,6 +93,7 @@
     "on-click": "kitty --title wlctl-popup -e wlctl"
   },
   "battery": {
+    "tooltip": true,
     "format": "{capacity}% {icon}",
     "format-discharging": "{icon}",
     "format-charging": "{icon}",
