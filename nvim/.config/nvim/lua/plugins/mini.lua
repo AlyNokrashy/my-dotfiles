@@ -7,6 +7,7 @@ local miniStatusline = require 'mini.statusline'
 local miniNotify = require 'mini.notify'
 local miniCmd = require 'mini.cmdline'
 local miniJump = require 'mini.jump2d'
+local starter = require 'mini.starter'
 local map = vim.keymap.set
 
 miniIcons.setup()
@@ -14,18 +15,23 @@ miniSurround.setup()
 miniPairs.setup()
 miniCmd.setup()
 
+-- Mini.Starter
+starter.setup {
+  header = "Sunrise Parabellum",
+  evaluate_single = true,
+}
+
 -- Mini.Notify
-miniNotify.setup({
+miniNotify.setup {
   lsp_progress = {
     enable = false,
-  }
-})
+  },
+}
 
 -- Mini.jump2d
 miniJump.setup()
-map('n', 'S', function() MiniJump2d.start() end, {desc = 'Jump to Word'})
-map('n', 's', function() MiniJump2d.start(MiniJump2d.builtin_opts.single_character) end, {desc = "Jump to Character"})
-
+map('n', 'S', function() MiniJump2d.start() end, { desc = 'Jump to Word' })
+map('n', 's', function() MiniJump2d.start(MiniJump2d.builtin_opts.single_character) end, { desc = 'Jump to Character' })
 
 -- Mini.ai
 miniAi.setup {
