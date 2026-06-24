@@ -15,8 +15,8 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: 'Maple Mono NF';
-  font-size: 20px;
+  font-family: 'Maple Mono NF Propo';
+  font-size: 18px;
 }
 
 tooltip {
@@ -64,13 +64,17 @@ tooltip {
 
 #cpu,
 #battery,
-#pulseaudio,
 #language {
   min-width: 15px;
   margin: 0 7.5px;
 }
 
 
+#pulseaudio
+{
+  min-width: 15px;
+  margin: 0 8px;
+}
 
 #bluetooth {
   margin-right: 17px;
@@ -106,14 +110,14 @@ tooltip {
 }
 
 .left #cpu, .right #cpu,
-.left #battery, .right #battery,
-.left #pulseaudio, .right #pulseaudio
+.left #battery, .right #battery
 {
   margin: 1.5px 0;
   padding: 6px 0;
   min-width: 0;
   min-height: 12px;
 }
+
 
 .left #bluetooth, .right #bluetooth { margin: 1.5px 0; padding: 6px 0; min-height: 12px; }
 .left #network, .right #network { margin: 1.5px 0; padding: 6px 0; min-height: 12px; }
