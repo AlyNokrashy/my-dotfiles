@@ -25,5 +25,6 @@ require 'plugins.mini'
 require 'plugins.friendly_snippets'
 require 'plugins.snacks'
 require 'plugins.highlight_colors'
+require 'plugins.obsidian'
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -1,7 +1,19 @@
-local snacks = require('snacks')
+local snacks = require 'snacks'
 
 snacks.setup {
   picker = { enabled = true },
+  image = {
+    enabled = true,
+    doc = { enabled = true },
+    img_dirs = {
+      'Attachments',
+      'attachments',
+      'images',
+      'Images',
+      'assets',
+      'Assets',
+    },
+  },
 }
 
 local picker = snacks.picker
@@ -45,10 +57,10 @@ vim.keymap.set(
   function()
     picker.lines {
       layout = {
-          preset = 'dropdown',
-          row = 4,
-          width = 0.30,
-          height = 0.50,
+        preset = 'dropdown',
+        row = 4,
+        width = 0.30,
+        height = 0.50,
       },
     }
   end,
@@ -63,3 +75,6 @@ end, { desc = 'Find in Open Files' })
 
 -- Shortcut for searching your Neovim configuration files
 vim.keymap.set('n', '<leader>fn', function() picker.files { cwd = vim.fn.stdpath 'config' } end, { desc = 'Find Config' })
+
+-- opening image under cursor in floating window
+vim.keymap.set('n', '<leader>ih', function() require('snacks').image.hover() end, { desc = 'Hover Image' })

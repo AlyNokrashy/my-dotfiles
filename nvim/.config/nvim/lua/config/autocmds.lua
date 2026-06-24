@@ -22,6 +22,19 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
+-- auto completion for obsidian
+vim.api.nvim_create_autocmd("CmdlineChanged", {
+  callback = function()
+    local cmdline = vim.fn.getcmdline()
+    if vim.fn.getcmdtype() ~= ":" then
+      return
+    end
+    if not cmdline:match "^Obsidian[A-Za-z0-9]*$" then
+      return
+    end
+    vim.fn.wildtrigger()
+  end,
+})
 
 -- helper for the PackChanged
 local function run_build(name, cmd, cwd)
