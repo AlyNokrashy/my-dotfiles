@@ -18,14 +18,37 @@ hl.window_rule({
 	},
 })
 
+-- zen
 hl.window_rule({
 	name = "zen-opacity",
 	match = {
 		class = "^(zen)$",
 	},
 
-		-- acitve inactive fullscreen
-		opacity = "1 override 1 1 override",
+	-- acitve inactive fullscreen
+	opacity = "1 override 1 1 override",
+})
+
+-- helium
+hl.window_rule({
+	name = "helium-opacity",
+	match = {
+		class = "^(helium)$",
+	},
+
+	-- acitve inactive fullscreen
+	opacity = "1 override 1 1 override",
+})
+
+-- chrome (helium apps)
+hl.window_rule({
+	name = "chrome-opacity",
+	match = {
+		class = "^chrome-.*-Default$",
+	},
+
+	-- acitve inactive fullscreen
+	opacity = "1 override 1 1 override",
 })
 
 hl.window_rule({
@@ -34,8 +57,8 @@ hl.window_rule({
 		class = "^(mpv)$",
 	},
 
-		-- acitve inactive fullscreen
-		opacity = "1 override 1 1 override",
+	-- acitve inactive fullscreen
+	opacity = "1 override 1 1 override",
 })
 
 hl.window_rule({
@@ -44,8 +67,8 @@ hl.window_rule({
 		class = "com.stremio.stremio",
 	},
 
-		-- acitve inactive fullscreen
-		opacity = "1 override 1 1 override",
+	-- acitve inactive fullscreen
+	opacity = "1 override 1 1 override",
 })
 
 hl.window_rule({
@@ -129,4 +152,3 @@ hl.layer_rule({
 	ignore_alpha = 0.5,
 	no_anim = true,
 })
-
