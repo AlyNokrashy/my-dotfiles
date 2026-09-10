@@ -1,3 +1,3 @@
 Terminal ="kitty"
-FileManager = "nautilus"
+FileManager = "kitty -e yazi"
 Menu = "nc -U /run/user/1000/walker/walker.sock"
