@@ -23,6 +23,9 @@ require('obsidian').setup {
     substitutions = {},
     -- customizations = {},
   },
+  attachments = {
+    folder = "/Attachments",
+  },
   frontmatter = {
     enabled = true,
 
