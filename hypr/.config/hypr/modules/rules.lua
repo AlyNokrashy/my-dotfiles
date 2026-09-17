@@ -71,6 +71,17 @@ hl.window_rule({
 	opacity = "1 override 1 1 override",
 })
 
+
+hl.window_rule({
+	name = "readest-opacity",
+	match = {
+		class = "readest",
+	},
+
+	-- acitve inactive fullscreen
+	opacity = "1 override 1 1 override",
+})
+
 hl.window_rule({
 	name = "float-nsxiv",
 	match = {
