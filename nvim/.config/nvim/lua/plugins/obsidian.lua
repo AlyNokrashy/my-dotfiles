@@ -26,34 +26,65 @@ require('obsidian').setup {
   attachments = {
     folder = "/Attachments",
   },
-  frontmatter = {
-    enabled = true,
 
-    func = function(note)
-      local out = {
-        id = note.id,
-        aliases = note.aliases,
-        tags = note.tags,
-      }
+frontmatter = {
+  enabled = true,
 
-      if note.metadata then out = vim.tbl_extend('force', out, note.metadata) end
+  func = function(note)
+    local out = {
+      -- id = note.id,
+      -- title = note.title,
+      aliases = note.aliases,
+      tags = note.tags,
+    }
 
-      out.type = out.type or 'concept'
-      out.created = out.created or os.date '%Y-%m-%d'
+    if note.metadata then
+      out = vim.tbl_extend('force', out, note.metadata)
+    end
 
-      return out
-    end,
+    out.type = out.type or 'concept'
 
-    sort = {
-      'id',
-      'aliases',
-      'type',
-      'course',
-      'semester',
-      'tags',
-      'created',
-    },
+    return out
+  end,
+
+  sort = {
+    -- 'title',
+    'aliases',
+    'type',
+    'course',
+    'semester',
+    'tags',
   },
+},
+  -- frontmatter = {
+  --   enabled = true,
+  --
+  --   func = function(note)
+  --     local out = {
+  --       id = note.id,
+  --       aliases = note.aliases,
+  --       tags = note.tags,
+  --     }
+  --
+  --     if note.metadata then out = vim.tbl_extend('force', out, note.metadata) end
+  --
+  --     out.type = out.type or 'concept'
+  --     -- out.created = out.created or os.date '%Y-%m-%d'
+  --
+  --     return out
+  --   end,
+  --
+  --   sort = {
+  --     'title',
+  --     -- 'id',
+  --     'aliases',
+  --     'type',
+  --     'course',
+  --     'semester',
+  --     'tags',
+  --     -- 'created',
+  --   },
+  -- },
   note_id_func = function(title)
     if title then
       return title
