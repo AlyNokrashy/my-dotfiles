@@ -7,7 +7,8 @@ fi
 POWERLEVEL9K_MODE="nerdfont-complete"
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
+# add cargo packages to PATH
+export PATH="$HOME/.cargo/bin:$PATH"
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -166,6 +167,8 @@ export MANPAGER="less -R"
 alias c="clear"
 alias v="nvim"
 alias vo='NVIM_APPNAME="nvim-old" nvim'
+
+alias tux="tuxedo"
 
 # advances mv and cp
 alias cp="/usr/local/bin/advcp -g"
