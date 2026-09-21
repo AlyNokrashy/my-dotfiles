@@ -15,11 +15,18 @@ hl.curve("smooth", {
 		{ 0.25, 1 },
 	},
 })
+
+hl.curve("rubber", {
+	type = "spring",
+	mass = 1,
+	stiffness = 70,
+	dampening = 10, })
+
 -- opening/moving tiled windows
 hl.animation({
 	leaf = "windows",
 	enabled = true,
-	speed = 5,
+	speed = 4,
 	bezier = "smooth",
 })
 
@@ -27,16 +34,16 @@ hl.animation({
 hl.animation({
 	leaf = "windowsIn",
 	enabled = true,
-	speed = 6,
+	speed = 4,
 	bezier = "smooth",
-	style = "popin",
+	style = "popin 80%",
 })
 
 -- closing windows
 hl.animation({
 	leaf = "windowsOut",
 	enabled = true,
-	speed = 5,
+	speed = 4,
 	bezier = "smooth",
 })
 
@@ -44,7 +51,7 @@ hl.animation({
 hl.animation({
 	leaf = "border",
 	enabled = true,
-	speed = 6,
+	speed = 4,
 	bezier = "smooth",
 })
 
@@ -60,9 +67,9 @@ hl.animation({
 hl.animation({
 	leaf = "workspaces",
 	enabled = true,
-	speed = 5,
+	speed = 2,
 	bezier = "smooth",
-	style = "slide",
+	style = "slidefade 20%",
 })
 
 ----------------------- General ---------------------------
@@ -97,29 +104,27 @@ hl.config({
 		inactive_opacity = 0.65,
 		fullscreen_opacity = 0.9,
 
-    -- window shadow
-    shadow = {
-      enabled = true,
-      range = 10,
-      render_power = 3,
-      color = "rgba(0,0,0,0.25)",
-    },
+		-- window shadow
+		shadow = {
+			enabled = true,
+			range = 10,
+			render_power = 3,
+			color = "rgba(0,0,0,0.25)",
+		},
 
+		-- Transparent window blur
+		blur = {
+			enabled = true,
+			size = 8,
+			passes = 2,
+			ignore_opacity = true,
 
-  -- Transparent window blur
-  blur = {
-    enabled = true,
-    size = 8,
-    passes = 2,
-    ignore_opacity = true,
-
-    noise = 0.02,
-    xray = false,
-    contrast = 1.5,
-    brightness = 0.8,
-  },
+			noise = 0.02,
+			xray = false,
+			contrast = 1.5,
+			brightness = 0.8,
+		},
 	},
-
 })
 
 ----------------------- dwindle layout ---------------------------
