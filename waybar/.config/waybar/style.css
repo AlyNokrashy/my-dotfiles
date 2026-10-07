@@ -149,23 +149,9 @@
   margin: 8.75px 0 0 0;
 }
 
-#custom-runcat {
-    font-family: 'runcat';
+#custom-polycat label {
+    font-family: "polycat";
     font-size: 30px;
-    color: @cpu-l-color;
+    padding: 0;
+    margin: 0;
 }
-
-/* #custom-runcat.low { */
-/*     font-family: 'runcat'; */
-/*     color: @cpu-l-color; */
-/* } */
-/**/
-/* #custom-runcat.medium { */
-/*     font-family: 'runcat'; */
-/*     color: @cpu-m-color; */
-/* } */
-/**/
-/* #custom-runcat.high { */
-/*     font-family: 'runcat'; */
-/*     color: @cpu-h-color; */
-/* } */

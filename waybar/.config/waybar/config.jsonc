@@ -6,8 +6,8 @@
   "height": 26,
   "width": 0,
   "modules-left": [
-    "hyprland/workspaces"
-    // "custom/runcat"
+    "hyprland/workspaces",
+    "custom/polycat"
   ],
   "modules-center": [
     "clock#horizontal"
@@ -45,12 +45,13 @@
     },
     "persistent-workspaces": {
       "HDMI-A-1": [1, 2, 3, 4, 5],
-      "eDP-2": [6, 7, 8, 9]
+      "eDP-1": [6, 7, 8, 9]
     }
   },
-  "custom/runcat": {
-    "exec": "~/.config/waybar/modules/runcat-text/main.py",
-    "return-type": "json"
+  "custom/polycat": {
+    "exec": "polycat",
+    "format": "{}",
+    "tooltip": false
   },
   "cpu": {
     "tooltip": true,
