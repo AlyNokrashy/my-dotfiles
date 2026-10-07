@@ -6,8 +6,8 @@
   "height": 26,
   "width": 0,
   "modules-left": [
-    "hyprland/workspaces",
-    "custom/runcat"
+    "hyprland/workspaces"
+    // "custom/runcat"
   ],
   "modules-center": [
     "clock#horizontal"
