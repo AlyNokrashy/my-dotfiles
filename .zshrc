@@ -177,8 +177,11 @@ alias mv="/usr/local/bin/advmv -g"
 # eza
 alias lss="eza --color=always --long --git --no-filesize --no-user --no-time --no-permissions --grid"
 
+alias stremio="flatpak run com.stremio.Stremio --no-window-decorations >/dev/null 2>&1 & disown"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # opencode
 export PATH=/home/aly/.opencode/bin:$PATH
+source /home/aly/.local/share/leaf/completions/_leaf
