@@ -770,3 +770,7 @@ exts = [
   { name = "zip", text = "", fg = "#fab387" },
 ]
 
+
+[flavor]
+dark = "noctalia"
+light = "noctalia"

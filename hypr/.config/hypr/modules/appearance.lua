@@ -107,15 +107,22 @@ hl.config({
 		-- window shadow
 		shadow = {
 			enabled = true,
-			range = 10,
+			range = 4,
 			render_power = 3,
-			color = "rgba(0,0,0,0.25)",
+			color = 0xee1a1a1a,
 		},
+		-- noctalia's blur from docs
+		-- blur = {
+		--     enabled = true,
+		--     size = 3,
+		--     passes = 2,
+		--     vibrancy = 0.1696,
+		--   },
 
 		-- Transparent window blur
 		blur = {
 			enabled = true,
-			size = 8,
+			size = 3,
 			passes = 2,
 			ignore_opacity = true,
 

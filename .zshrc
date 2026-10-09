@@ -152,6 +152,8 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export MANPAGER="less -R"
 
 
+export QT_QPA_PLATFORMTHEME=qt6ct
+
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
@@ -181,6 +183,7 @@ alias stremio="flatpak run com.stremio.Stremio --no-window-decorations >/dev/nul
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 
 # opencode
 export PATH=/home/aly/.opencode/bin:$PATH
