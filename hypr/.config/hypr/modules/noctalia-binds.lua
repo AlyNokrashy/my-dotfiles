@@ -7,6 +7,8 @@ hl.bind(mainMod .. "+S", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center"))
 hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
 hl.bind(mainMod .. "+W", hl.dsp.exec_cmd(ipc .. "panel-toggle wallpaper"))
 hl.bind(mainMod .. "+Escape", hl.dsp.exec_cmd(ipc .. "panel-toggle session"))
+hl.bind(mainMod .. "+SHIFT+S", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
+hl.bind(mainMod .. "+period", hl.dsp.exec_cmd(ipc .. "panel-toggle clipboard"))
 hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher hold"))
 
 -- Media keys

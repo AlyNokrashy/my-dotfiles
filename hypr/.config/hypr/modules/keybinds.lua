@@ -13,8 +13,8 @@ hl.bind("SUPER + Return", hl.dsp.exec_cmd(Terminal))
 -- Kill focused app
 hl.bind("SUPER + Q", hl.dsp.window.close())
 
--- Screenshot region
-hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region"))
+-- -- Screenshot region
+-- hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region"))
 
 -- File manager
 hl.bind("SUPER + E", hl.dsp.exec_cmd(FileManager))
