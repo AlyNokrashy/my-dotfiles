@@ -28,8 +28,8 @@ hl.bind("SUPER + F", hl.dsp.window.fullscreen())
 -- App launcher
 hl.bind("SUPER + D", hl.dsp.exec_cmd(Menu))
 
--- Change wallpaper
-hl.bind("SUPER + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/setwal"))
+-- -- Change wallpaper
+-- hl.bind("SUPER + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/setwal"))
 
 -- Notifications center
 hl.bind("SUPER + A", hl.dsp.exec_cmd("swaync-client -t"))
@@ -43,8 +43,8 @@ hl.bind("SUPER + Z", hl.dsp.exec_cmd("zen-browser"))
 -- Toggle wifi
 hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd("nmcli radio wifi toggle"))
 
--- Powermenu
-hl.bind("SUPER + Escape", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/powermenu"))
+-- -- Powermenu
+-- hl.bind("SUPER + Escape", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/powermenu"))
 
 -- Readest
 hl.bind("SUPER + R", hl.dsp.exec_cmd("readest"))
