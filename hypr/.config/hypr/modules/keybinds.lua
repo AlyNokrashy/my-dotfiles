@@ -31,8 +31,8 @@ hl.bind("SUPER + D", hl.dsp.exec_cmd(Menu))
 -- -- Change wallpaper
 -- hl.bind("SUPER + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/setwal"))
 
--- Notifications center
-hl.bind("SUPER + A", hl.dsp.exec_cmd("swaync-client -t"))
+-- -- Notifications center
+-- hl.bind("SUPER + A", hl.dsp.exec_cmd("swaync-client -t"))
 
 -- Performance mode
 hl.bind("SUPER + P", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/performance-toggle.sh"))
