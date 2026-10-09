@@ -171,6 +171,7 @@ alias v="nvim"
 alias vo='NVIM_APPNAME="nvim-old" nvim'
 
 alias tux="tuxedo"
+alias steam="prime-run steam"
 
 # advances mv and cp
 alias cp="/usr/local/bin/advcp -g"
