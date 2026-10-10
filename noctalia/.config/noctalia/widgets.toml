@@ -1,0 +1,26 @@
+[widget.media]
+hide_when_no_media = true
+
+[widget.asus_fan]
+enabled = false
+type = "kv7499/asus-fan:asus_fan"
+
+[widget.cat]
+cat_size = 37
+type = "dotnetrob/cat:cat"
+
+[widget.clock]
+color = "secondary"
+format = "{:%-I:%M %p}"
+
+[widget.launcher]
+enabled = false
+
+[widget.notifications]
+enabled = false
+
+[widget.wallpaper]
+enabled = false
+
+[widget.workspaces]
+style = "minimal"

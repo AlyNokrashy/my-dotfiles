@@ -1,0 +1,18 @@
+[shell]
+button_borders = false
+corner_radius_scale = 0.0
+font_family = "Maple Mono NF"
+input_borders = false
+time_format = "{:%-I:%M %p}"
+
+    [shell.launcher]
+    categories = false
+    compact = true
+
+    [shell.panel]
+    session_placement = "floating"
+    session_position = "center"
+    transparency_mode = "glass"
+
+    [shell.session]
+    grid_columns = 4
