@@ -171,17 +171,18 @@ alias v="nvim"
 alias vo='NVIM_APPNAME="nvim-old" nvim'
 
 alias tux="tuxedo"
+
 alias steam="prime-run steam"
 
 # advances mv and cp
 alias cp="/usr/local/bin/advcp -g"
 alias mv="/usr/local/bin/advmv -g"
 
-# eza
 alias lss="eza --color=always --long --git --no-filesize --no-user --no-time --no-permissions --grid"
 
 alias stremio="flatpak run com.stremio.Stremio --no-window-decorations >/dev/null 2>&1 & disown"
 
+alias g++="g++ -std=c++17 -Wall -Wextra"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
