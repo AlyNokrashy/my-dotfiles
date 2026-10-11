@@ -1,71 +1,86 @@
 {
-    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "logo": {
-        "type": "file",
-        "source": "~/.config/fastfetch/de_small.txt"
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/de_small.txt",
+    "color": {
+      "1": "#a9b663",
+      "2": "#e78a4e"
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "constants": [
+      "─────────────────"
+    ],
+    "key": {
+      "type": "icon",
+      "paddingLeft": 2
     },
-    "display": {
-        "separator": "  ",
-        "constants": [
-            "─────────────────" 
-        ],
-        "key": {
-            "type": "icon",
-            "paddingLeft": 2
-        }
+    "color": {
+      "keys": "#a9b665",
+      "title": "#e78a4e"
     },
-    "modules": [
-        {
-            "type": "custom", 
-            "format": "┌{$1} {#1}Hardware Information{#} {$1}┐"
-        },
-        "host",
-        "disk",
-        "memory",
-        "brightness",
-        "battery",
-        "poweradapter",
-        "sound",
-        {
-            "type": "custom",
-            "format": "├{$1} {#1}Software Information{#} {$1}┤"
-        },
-        {
-            "type": "title",
-            "keyIcon": "",
-            "key": "Title",
-            "format": "{user-name}@{host-name}"
-        },
-        "os",
-        "de",
-        "wm",
-        "shell",
-        "terminal",
-        "icons",
-        "wallpaper",
-        "packages",
-        "uptime",
-        {
-            "type": "localip",
-            "compact": true
-        },
-        {
-            "type": "publicip",
-            "timeout": 1000,
-            "compact": true
-        },
-        {
-            "type": "wifi",
-            "format": "{ssid}"
-        },
-        {
-            "type": "custom",
-            "format": "└{$1}──────────────────────{$1}┘"
-        },
-        {
-            "type": "colors",
-            "paddingLeft": 2,
-            "symbol": "circle"
-        }
-    ]
+    "percent": {
+      "color": {
+        "green": "#89b482",
+        "yellow": "#dbe996",
+        "red": "#ea6962"
+      }
+    }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "┌{$1} {#1}Hardware Information{#} {$1}┐"
+    },
+    "host",
+    "disk",
+    "memory",
+    "brightness",
+    "battery",
+    "poweradapter",
+    "sound",
+    {
+      "type": "custom",
+      "format": "├{$1} {#1}Software Information{#} {$1}┤"
+    },
+    {
+      "type": "title",
+      "keyIcon": "",
+      "key": "Title",
+      "format": "{user-name}@{host-name}"
+    },
+    "os",
+    "de",
+    "wm",
+    "shell",
+    "terminal",
+    "icons",
+    "wallpaper",
+    "packages",
+    "uptime",
+    {
+      "type": "localip",
+      "compact": true
+    },
+    {
+      "type": "publicip",
+      "timeout": 1000,
+      "compact": true
+    },
+    {
+      "type": "wifi",
+      "format": "{ssid}"
+    },
+    {
+      "type": "custom",
+      "format": "└{$1}──────────────────────{$1}┘"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    }
+  ]
 }
