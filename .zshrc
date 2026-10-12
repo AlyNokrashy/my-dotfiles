@@ -127,8 +127,8 @@ alias g++="g++ -std=c++17 -Wall -Wextra"
 
 
 # opencode
-export PATH=/home/aly/.opencode/bin:$PATH
-source /home/aly/.local/share/leaf/completions/_leaf
+export PATH="$HOME/.opencode/bin:$PATH"
+[[ -f "$HOME/.local/share/leaf/completions/_leaf" ]] && source "$HOME/.local/share/leaf/completions/_leaf"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
