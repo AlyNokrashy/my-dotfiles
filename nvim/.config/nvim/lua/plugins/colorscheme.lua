@@ -1,8 +1,3 @@
----@diagnostic disable-next-line: missing-fields
-require('tokyonight').setup {
-  styles = {
-    comments = { italic = false },
-  },
-}
-
-vim.cmd.colorscheme 'catppuccin'
+require("rose-pine").setup()
+vim.cmd("colorscheme rose-pine")
+-- vim.cmd.colorscheme 'base16-rose-pine-moon'

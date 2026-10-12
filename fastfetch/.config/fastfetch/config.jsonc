@@ -4,8 +4,8 @@
     "type": "file",
     "source": "~/.config/fastfetch/de_small.txt",
     "color": {
-      "1": "#a7c063",
-      "2": "#d3c663"
+      "1": "#ea9a63",
+      "2": "#63cfd8"
     }
   },
   "display": {
@@ -18,14 +18,14 @@
       "paddingLeft": 2
     },
     "color": {
-      "keys": "#a7c080",
-      "title": "#d3c6aa"
+      "keys": "#ea9a97",
+      "title": "#9ccfd8"
     },
     "percent": {
       "color": {
-        "green": "#9da9a0",
-        "yellow": "#c8e996",
-        "red": "#e67e80"
+        "green": "#32758f",
+        "yellow": "#ea9895",
+        "red": "#eb6f92"
       }
     }
   },

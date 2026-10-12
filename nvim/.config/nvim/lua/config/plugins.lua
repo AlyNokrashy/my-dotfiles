@@ -25,4 +25,10 @@ vim.pack.add {
 vim.pack.add { { src = 'https://github.com/L3MON4D3/LuaSnip', version = vim.version.range '2.*' } }
 vim.pack.add { 'https://github.com/folke/todo-comments.nvim' }
 vim.pack.add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' } }
-vim.pack.add {'https://github.com/RRethy/base16-nvim'}
+vim.pack.add { 'https://github.com/RRethy/base16-nvim' }
+vim.pack.add {
+  {
+    src = 'https://github.com/rose-pine/neovim',
+    name = 'rose-pine',
+  },
+}
