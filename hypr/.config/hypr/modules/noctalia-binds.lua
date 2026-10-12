@@ -1,4 +1,4 @@
-local mainMod = "SUPER"
+local mainMod = "ALT"
 local ipc = "noctalia msg "
 
 -- Core binds

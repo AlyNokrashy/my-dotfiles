@@ -92,6 +92,11 @@ hl.bind("SUPER + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
 hl.bind("SUPER + CTRL + H", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind("SUPER + CTRL + L", hl.dsp.focus({ workspace = "e+1" }))
 
+-- Scrolling layout keys -- 
+hl.bind("SUPER + period", hl.dsp.layout("move +col"))
+hl.bind("SUPER + comma", hl.dsp.layout("move -col"))
+hl.bind("SUPER + equal", hl.dsp.layout("colresize +conf"))
+
 -- Laptop multimedia keys
 -- hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
 --

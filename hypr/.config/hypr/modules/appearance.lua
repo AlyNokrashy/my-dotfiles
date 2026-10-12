@@ -1,7 +1,6 @@
 local wal = dofile(os.getenv("HOME") .. "/.cache/wal/colors-hyprland.lua")
 
 ----------------------- Animations ---------------------------
-
 hl.config({
 	animations = {
 		enabled = true,
@@ -20,7 +19,8 @@ hl.curve("rubber", {
 	type = "spring",
 	mass = 1,
 	stiffness = 70,
-	dampening = 10, })
+	dampening = 10,
+})
 
 -- opening/moving tiled windows
 hl.animation({
@@ -90,7 +90,7 @@ hl.config({
 		-- enables resizing windows by clicking and dragging on borders and gaps-
 		resize_on_border = true,
 
-		layout = "dwindle",
+		layout = "scrolling",
 	},
 })
 
@@ -134,21 +134,6 @@ hl.config({
 	},
 })
 
------------------------ dwindle layout ---------------------------
-
-hl.config({
-	dwindle = {
-		preserve_split = true,
-	},
-})
-
------------------------ master layout ---------------------------
-
-hl.config({
-	master = {
-		new_status = "master",
-	},
-})
 
 ----------------------- misc ---------------------------
 
