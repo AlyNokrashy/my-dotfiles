@@ -1,101 +1,130 @@
+local mainMod = "SUPER"
+local tapTimer = nil
+local function on_double_tap(mods, key, callback, timeout, opts)
+	timeout = timeout or 300
+	local bindString
+	if mods then
+		bindString = mods .. " + " .. key
+	else
+		bindString = key
+	end
+	hl.bind(bindString, function()
+		if tapTimer then
+			tapTimer = nil
+			callback()
+		else
+			tapTimer = hl.timer(function()
+				tapTimer = nil
+			end, { timeout = timeout, type = "oneshot" })
+		end
+	end, opts)
+end
+
+
 -- reload waybar
-hl.bind("SUPER + SHIFT + B", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/waybar-reload"))
+hl.bind(mainMod .. "+ SHIFT + B", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/waybar-reload"))
 
 -- reload hyprland
-hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind(mainMod .. "+ SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 
 -- Exit Hyprland
-hl.bind("SUPER + SHIFT + ESCAPE", hl.dsp.exit())
+hl.bind(mainMod .. "+ SHIFT + ESCAPE", hl.dsp.exit())
 
 -- Terminal
-hl.bind("SUPER + Return", hl.dsp.exec_cmd(Terminal))
+hl.bind(mainMod .. "+ Return", hl.dsp.exec_cmd(Terminal))
 
 -- Kill focused app
-hl.bind("SUPER + Q", hl.dsp.window.close())
+hl.bind(mainMod .. "+ Q", hl.dsp.window.close())
 
 -- -- Screenshot region
--- hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region"))
+-- hl.bind(mainMod .. "+ SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region"))
 
 -- File manager
-hl.bind("SUPER + E", hl.dsp.exec_cmd(FileManager))
+hl.bind(mainMod .. "+ E", hl.dsp.exec_cmd(FileManager))
 
 -- Toggle floating
-hl.bind("SUPER + SHIFT + SPACE", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. "+ SHIFT + SPACE", hl.dsp.window.float({ action = "toggle" }))
 
 -- Fullscreen
-hl.bind("SUPER + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. "+ F", hl.dsp.window.fullscreen())
 
 -- App launcher
-hl.bind("SUPER + D", hl.dsp.exec_cmd(Menu))
+hl.bind(mainMod .. "+ D", hl.dsp.exec_cmd(Menu))
 
 -- -- Change wallpaper
--- hl.bind("SUPER + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/setwal"))
+-- hl.bind(mainMod .. "+ W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/setwal"))
 
 -- -- Notifications center
--- hl.bind("SUPER + A", hl.dsp.exec_cmd("swaync-client -t"))
+-- hl.bind(mainMod .. "+ A", hl.dsp.exec_cmd("swaync-client -t"))
 
 -- Performance mode
-hl.bind("SUPER + P", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/performance-toggle.sh"))
+hl.bind(mainMod .. "+ P", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/performance-toggle.sh"))
 
 -- Zen browser
-hl.bind("SUPER + Z", hl.dsp.exec_cmd("zen-browser"))
+hl.bind(mainMod .. "+ Z", hl.dsp.exec_cmd("zen-browser"))
 
 -- Toggle wifi
-hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd("nmcli radio wifi toggle"))
+hl.bind(mainMod .. "+ SHIFT + W", hl.dsp.exec_cmd("nmcli radio wifi toggle"))
 
 -- -- Powermenu
--- hl.bind("SUPER + Escape", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/powermenu"))
+-- hl.bind(mainMod .. "+ Escape", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/powermenu"))
 
 -- Readest
-hl.bind("SUPER + R", hl.dsp.exec_cmd("readest"))
+hl.bind(mainMod .. "+ R", hl.dsp.exec_cmd("readest"))
 
 -- Helium browser
-hl.bind("SUPER + B", hl.dsp.exec_cmd("helium-browser"))
+hl.bind(mainMod .. "+ B", hl.dsp.exec_cmd("helium-browser"))
 
 -- OBS Start/Stop
-hl.bind( "SUPER + F10", hl.dsp.send_shortcut({ mods = "CTRL", key = "S", window = "class:^(com\\.obsproject\\.Studio)$" }))
+hl.bind(
+	mainMod .. "+ F10",
+	hl.dsp.send_shortcut({ mods = "CTRL", key = "S", window = "class:^(com\\.obsproject\\.Studio)$" })
+)
 
 -- Workspaces switching
 for i = 1, 9 do
-	hl.bind("SUPER + " .. i, hl.dsp.focus({ workspace = i }))
+	hl.bind(mainMod .. "+ " .. i, hl.dsp.focus({ workspace = i }))
 end
 
-hl.bind("SUPER + 0", hl.dsp.focus({ workspace = 10 }))
+hl.bind(mainMod .. "+ 0", hl.dsp.focus({ workspace = 10 }))
 
 for i = 1, 9 do
-	hl.bind("SUPER + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
+	hl.bind(mainMod .. "+ SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
 end
 
-hl.bind("SUPER + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
+hl.bind(mainMod .. "+ SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
 -- swapping capslock and esc
 -- hl.config({ input = { kb_options = "caps:swapescape", },
 -- })
 
 -- move and resize windows with mouse
-hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(mainMod .. "+ mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mainMod .. "+ mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- focus windows
-hl.bind("SUPER + H", hl.dsp.focus({ direction = "l" }))
-hl.bind("SUPER + L", hl.dsp.focus({ direction = "r" }))
-hl.bind("SUPER + K", hl.dsp.focus({ direction = "u" }))
-hl.bind("SUPER + J", hl.dsp.focus({ direction = "d" }))
+hl.bind(mainMod .. "+ H", hl.dsp.focus({ direction = "l" }))
+hl.bind(mainMod .. "+ L", hl.dsp.focus({ direction = "r" }))
+hl.bind(mainMod .. "+ K", hl.dsp.focus({ direction = "u" }))
+hl.bind(mainMod .. "+ J", hl.dsp.focus({ direction = "d" }))
 
 -- move windows
-hl.bind("SUPER + SHIFT + H", hl.dsp.window.move({ direction = "l" }))
-hl.bind("SUPER + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
-hl.bind("SUPER + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
-hl.bind("SUPER + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
+hl.bind(mainMod .. "+ SHIFT + H", hl.dsp.window.move({ direction = "l" }))
+hl.bind(mainMod .. "+ SHIFT + L", hl.dsp.window.move({ direction = "r" }))
+hl.bind(mainMod .. "+ SHIFT + K", hl.dsp.window.move({ direction = "u" }))
+hl.bind(mainMod .. "+ SHIFT + J", hl.dsp.window.move({ direction = "d" }))
 
 -- workspace navigation
-hl.bind("SUPER + CTRL + H", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind("SUPER + CTRL + L", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. "+ CTRL + H", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. "+ CTRL + L", hl.dsp.focus({ workspace = "e+1" }))
 
--- Scrolling layout keys -- 
-hl.bind("SUPER + period", hl.dsp.layout("move +col"))
-hl.bind("SUPER + comma", hl.dsp.layout("move -col"))
-hl.bind("SUPER + equal", hl.dsp.layout("colresize +conf"))
+-- Scrolling layout keys --
+hl.bind(mainMod .. "+ period", hl.dsp.layout("move +col"))
+hl.bind(mainMod .. "+ comma", hl.dsp.layout("move -col"))
+-- hl.bind(mainMod .. "+ equal", hl.dsp.layout("colresize +conf"))
+on_double_tap(mainMod, "SUPER_L", function()
+	hl.dispatch(hl.dsp.layout("colresize +conf"))
+end, 300, { release = true })
 
 -- Laptop multimedia keys
 -- hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
