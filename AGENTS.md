@@ -7,7 +7,7 @@ Personal Linux (Hyprland/Wayland) dotfiles. Config only: no build, test, lint, o
 - Each top-level dir (`hypr`, `kitty`, `nvim`, `waybar`, `wal`, `walker`, `swaync`, `btop`, `fastfetch`, `mpd`, `rmpc`, `yazi`, `noctalia`) is a GNU Stow package containing `.config/<app>`. Install/refresh: `cd ~/dotfiles && stow <pkg> [<pkg>...]`.
 - `.zshrc` at the repo root is **not** a stow package; it is symlinked manually to `~/.zshrc`. Editing it in the repo is correct.
 - In this checkout the config dirs are already stowed symlinks (`~/.config/<app> -> ~/dotfiles/<app>/.config/<app>`), so repo edits take effect immediately. Re-run `stow` only when adding/removing files or new packages.
-- No root `.gitignore`. `waybar/.config/waybar/modules/runcat-text/.gitignore` excludes its `.venv/`; never commit that venv.
+- No root `.gitignore` (nothing currently needs one).
 
 ## Theming (pywal) — the main cross-cutting concern
 
@@ -29,7 +29,7 @@ Personal Linux (Hyprland/Wayland) dotfiles. Config only: no build, test, lint, o
 
 ## Waybar
 
-- `config.jsonc` + `style.css`. `custom/runcat` runs the vendored third-party `modules/runcat-text/main.py` (needs `pyjson5` in its own `.venv`); treat that directory as upstream code.
+- `config.jsonc` + `style.css`.
 
 ## Gotchas
 
