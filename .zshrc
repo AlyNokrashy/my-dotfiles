@@ -28,9 +28,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# pywal colors
-source ~/.cache/wal/colors.sh
-
 # zoxide
 eval "$(zoxide init zsh --cmd cd)"
 # eval "$(starship init zsh)"

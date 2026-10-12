@@ -1,5 +1,3 @@
-local wal = dofile(os.getenv("HOME") .. "/.cache/wal/colors-hyprland.lua")
-
 ----------------------- Animations ---------------------------
 hl.config({
 	animations = {
@@ -81,11 +79,6 @@ hl.config({
 		gaps_out = 7,
 
 		border_size = 2,
-
-		col = {
-			active_border = wal.colors.color5,
-			inactive_border = wal.colors.color0,
-		},
 
 		-- enables resizing windows by clicking and dragging on borders and gaps-
 		resize_on_border = true,
