@@ -8,6 +8,7 @@ dofile(os.getenv("HOME") .. "/.config/hypr/modules/appearance.lua")
 dofile(os.getenv("HOME") .. "/.config/hypr/modules/keybinds.lua")
 dofile(os.getenv("HOME") .. "/.config/hypr/modules/noctalia-binds.lua")
 dofile(os.getenv("HOME") .. "/.config/hypr/modules/layout.lua")
+dofile(os.getenv("HOME") .. "/.config/hypr/modules/plugins.lua")
 
 
 

@@ -126,6 +126,36 @@ on_double_tap(mainMod, "SUPER_L", function()
 	hl.dispatch(hl.dsp.layout("colresize +conf"))
 end, 300, { release = true })
 
+-- scrolling overview plugin
+hl.bind(mainMod .. "+g", function()
+    hl.plugin.scrolloverview.overview("toggle all")
+end)
+
+hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
+
+-- scrolling overview plugin
+hl.plugin.scrolloverview.gesture({ fingers = 3, direction = "vertical" })
+hl.plugin.scrolloverview.gesture({ fingers = 4, direction = "vertical", mod = "SUPER", scale = 1.5 })
+hl.plugin.scrolloverview.gesture({ fingers = 4, direction = "vertical", disable_inhibit = true })
+hl.plugin.scrolloverview.gesture({ fingers = 3, direction = "vertical", action = "unset" })
+
+-- keymaps inside the overview view
+hl.define_submap("scrolloverview", function()
+    hl.bind("h",   hl.plugin.scrolloverview.navigate("left"))
+    hl.bind("l",  hl.plugin.scrolloverview.navigate("right"))
+    hl.bind("k",     hl.plugin.scrolloverview.navigate("up"))
+    hl.bind("j",   hl.plugin.scrolloverview.navigate("down"))
+    hl.bind("return", hl.plugin.scrolloverview.overview("select"))
+    hl.bind("escape", hl.plugin.scrolloverview.overview("off"))
+    hl.bind("mouse:272", function()
+        -- Select the clicked window, or just the workspace if no window was clicked, then close the overview. This is the default behaviour if submap is not defined.
+        hl.plugin.scrolloverview.overview("select")
+        hl.plugin.scrolloverview.window("select")
+        hl.plugin.scrolloverview.overview("off")
+    end, { mouse = true })
+    hl.bind("mouse:274", hl.plugin.scrolloverview.window("close"), { mouse = true })
+end)
+
 -- Laptop multimedia keys
 -- hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
 --
