@@ -8,6 +8,7 @@ local miniNotify = require 'mini.notify'
 local miniCmd = require 'mini.cmdline'
 local miniJump = require 'mini.jump2d'
 local starter = require 'mini.starter'
+local files = require 'mini.files'
 local map = vim.keymap.set
 
 miniIcons.setup()
@@ -15,9 +16,13 @@ miniSurround.setup()
 miniPairs.setup()
 miniCmd.setup()
 
+files.setup {
+  vim.keymap.set('n', '-',function() MiniFiles.open() end, { desc = 'Open MiniFiles' }),
+}
+
 -- Mini.Starter
 starter.setup {
-  header = "Sunrise Parabellum",
+  header = 'Sunrise Parabellum',
   evaluate_single = true,
 }
 

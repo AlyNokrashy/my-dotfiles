@@ -10,7 +10,7 @@ require 'config.keymaps'
 require 'config.autocmds'
 require 'config.plugins'
 
-require 'plugins.oil'
+-- require 'plugins.oil'
 require 'plugins.gitsigns'
 require 'plugins.treesitter'
 require 'plugins.luasnip'
