@@ -11,5 +11,9 @@ shell_mode = "auto"
         [theme.templates.user.obsidian_extra]
         input_path = "/home/aly/.config/noctalia/Obsidian/obsidian.css"
         output_path = "/home/aly/Documents/Obsidian/My Vault/.obsidian/snippets/noctalia.css"
+
+        [theme.templates.user.leaf]
+        input_path_modes = { dark = "/home/aly/.config/leaf/noctalia-dark.toml.template", light = "/home/aly/.config/leaf/noctalia-light.toml.template" }
+        output_path = "/home/aly/.config/leaf/noctalia.toml"
 [wallpaper]
 directory = "/home/aly/Pictures/Wallpapers/"

@@ -4,10 +4,10 @@ Personal Linux (Hyprland/Wayland) dotfiles. Config only: no build, test, lint, o
 
 ## Structure & install
 
-- Each top-level dir (`hypr`, `kitty`, `nvim`, `waybar`, `wal`, `walker`, `swaync`, `btop`, `fastfetch`, `mpd`, `rmpc`, `yazi`, `noctalia`) is a GNU Stow package containing `.config/<app>`. Install/refresh: `cd ~/dotfiles && stow <pkg> [<pkg>...]`.
+- Each top-level dir (`hypr`, `kitty`, `leaf`, `nvim`, `waybar`, `wal`, `walker`, `swaync`, `btop`, `fastfetch`, `mpd`, `rmpc`, `yazi`, `noctalia`) is a GNU Stow package containing `.config/<app>`. Install/refresh: `cd ~/dotfiles && stow <pkg> [<pkg>...]`.
 - `.zshrc` at the repo root is **not** a stow package; it is symlinked manually to `~/.zshrc`. Editing it in the repo is correct.
 - In this checkout the config dirs are already stowed symlinks (`~/.config/<app> -> ~/dotfiles/<app>/.config/<app>`), so repo edits take effect immediately. Re-run `stow` only when adding/removing files or new packages.
-- No root `.gitignore` (nothing currently needs one).
+- Root `.gitignore` only excludes Noctalia-generated files (currently `leaf/.config/leaf/noctalia.toml`).
 
 ## Theming (pywal) — the main cross-cutting concern
 
