@@ -1,0 +1,45 @@
+@import "/home/aly/.cache/noctalia/zen-browser/zen-userChrome.css";
+/* Hide browser UI scrollbars */
+
+scrollbar,
+scrollcorner {
+  display: none !important;
+}
+
+
+.zen-current-workspace-indicator {
+  display: none !important
+}
+
+* { border-radius: 0px !important; }
+
+/* :root { */
+/*     --zen-border-radius: 0px !important; */
+/**/
+/* } */
+/**/
+/* & #tabbrowser-tabbox { */
+/*     padding: 0 !important; */
+/**/
+/*     #tabbrowser-tabpanels { */
+/*         padding: 0 !important; */
+/**/
+/**/
+/*         .browserSidebarContainer { */
+/*             margin: 0 !important; */
+/*             border-radius: 0 !important; */
+/*             --zen-webview-border-radius: 0 0 0 0 !important; */
+/*             --zen-element-seperation: 0 !important; */
+/**/
+/*         } */
+/*     } */
+/* } */
+
+
+
+/* #tabbrowser-tabpanels {overflow: -moz-hidden-unscrollable;} */
+/* #tabbrowser-tabbox * {border-radius: 10px} */
+
+/* #tabbrowser-tabpanels {overflow: -moz-hidden-unscrollable;} */
+/* #tabbrowser-tabbox * {border-radius: var(--zen-element-separation) !important} */
+

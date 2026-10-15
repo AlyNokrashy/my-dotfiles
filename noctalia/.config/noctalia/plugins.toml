@@ -1,6 +1,6 @@
 [plugins]
 # Fully-qualified ids ("<author>/<plugin>") that are active.
-enabled = ["noctalia/screen_recorder", "yuuto/arch-updater", "cleboost/librelinkup", "dotnetrob/cat", "kv7499/asus-fan", "noctalia/wallhaven"]
+enabled = ["noctalia/screen_recorder","gustav0ar/drive-health" , "yuuto/arch-updater", "cleboost/librelinkup", "dotnetrob/cat", "kv7499/asus-fan", "noctalia/wallhaven"]
 auto_update = "all"
 
 # A git source: cached and updated by Noctalia.

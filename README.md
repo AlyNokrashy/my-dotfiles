@@ -23,7 +23,7 @@ sudo pacman -S git stow noctalia hyprland kitty neovim yazi btop fastfetch \
 ```bash
 git clone <repo> ~/dotfiles
 cd ~/dotfiles
-stow btop fastfetch hypr kitty leaf mpd noctalia nvim rmpc swaync wal walker waybar yazi
+stow btop fastfetch hypr kitty leaf mpd noctalia nvim rmpc swaync wal walker waybar yazi zen
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ```
 
@@ -52,6 +52,10 @@ manually with `noctalia msg templates-apply`.
 - **SSH key**: `~/.ssh/id_ed25519` (added by ssh-agent on start).
 - **External scripts (not in this repo)**: `~/.local/bin/{setwal,waybar-reload,
   powermenu,eject-storage.sh}` and `~/scripts/pywal16`.
+- **Zen Browser profile**: the `zen` package targets the profile dir
+  `~/.config/zen/1gai9kpi.Default (release)/chrome` (name is machine-specific).
+  It tracks only the hand-edited `userChrome.css` and `userContent.css`;
+  `zen-themes.css` and `locales/` are Zen-generated and left untracked.
 
 ## Legacy / unused
 

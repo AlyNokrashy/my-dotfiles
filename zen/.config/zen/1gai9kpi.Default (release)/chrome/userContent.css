@@ -1,0 +1,10 @@
+@import "/home/aly/.cache/noctalia/zen-browser/zen-userContent.css";
+/* Hide scrollbars everywhere */
+
+* {
+  scrollbar-width: none !important;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+}
