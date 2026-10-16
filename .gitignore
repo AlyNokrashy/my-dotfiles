@@ -13,3 +13,6 @@ yazi/.config/yazi/flavors/noctalia.yazi/tmtheme.xml
 # ---- zsh: auto-cloned plugins (by zsh/.config/zsh/plugins.zsh) and compinit cache ----
 zsh/.config/zsh/plugins/
 zsh/.config/zsh/.zcompdump*
+
+# ---- stray local backups ----
+*.bak
