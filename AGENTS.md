@@ -4,10 +4,11 @@ Personal Linux (Hyprland/Wayland) dotfiles. Config only: no build, test, lint, o
 
 ## Structure & install
 
-- Each top-level dir (`hypr`, `kitty`, `leaf`, `nvim`, `waybar`, `wal`, `walker`, `swaync`, `btop`, `fastfetch`, `mpd`, `rmpc`, `yazi`, `noctalia`, `zen`) is a GNU Stow package containing `.config/<app>`. Install/refresh: `cd ~/dotfiles && stow <pkg> [<pkg>...]`.
-- `.zshrc` at the repo root is **not** a stow package; it is symlinked manually to `~/.zshrc`. Editing it in the repo is correct.
+- Each top-level dir (`hypr`, `kitty`, `leaf`, `nvim`, `waybar`, `wal`, `walker`, `swaync`, `btop`, `fastfetch`, `mpd`, `rmpc`, `yazi`, `noctalia`, `zen`, `zsh`) is a GNU Stow package containing `.config/<app>`. Install/refresh: `cd ~/dotfiles && stow <pkg> [<pkg>...]`.
+- The zsh config is the **`zsh` stow package** (`.config/zsh`), i.e. `~/.config/zsh -> ~/dotfiles/zsh/.config/zsh`. `ZDOTDIR` is `~/.config/zsh` (set in `/etc/zsh/zshenv`); there is no `~/.zshrc`. The `.zshrc` sources the sibling `*.zsh` files from `$ZDOTDIR`.
+- The `zsh` package's `plugins/` dir is populated automatically at shell start by `_zplugin_load` in `plugins.zsh` (four third-party repos), so it is **gitignored** — never commit it. Re-clone from scratch by deleting `~/.config/zsh/plugins/`.
 - In this checkout the config dirs are already stowed symlinks (`~/.config/<app> -> ~/dotfiles/<app>/.config/<app>`), so repo edits take effect immediately. Re-run `stow` only when adding/removing files or new packages.
-- Root `.gitignore` only excludes Noctalia-generated files (currently `leaf/.config/leaf/noctalia.toml`).
+- Root `.gitignore` excludes Noctalia-generated files (`leaf/.config/leaf/noctalia.toml`) and the zsh package's auto-cloned plugins and compinit cache (`zsh/.config/zsh/plugins/`, `zsh/.config/zsh/.zcompdump*`).
 
 ## Theming (pywal) — the main cross-cutting concern
 
