@@ -151,9 +151,10 @@ Notes:
 sudo tar --zstd --acls --xattrs -cpf \
   /mnt/backup/cachy-backup/etc-$(date +%F).tar.zst -C / etc
 
-# Custom system-wide binaries you (or tools) placed by hand:
-sudo tar --zstd -cpf \
-  /mnt/backup/cachy-backup/usr-local-bin-$(date +%F).tar.zst -C /usr/local bin
+# Everything under /usr/local — custom binaries, the noctalia-drive-health
+# libexec scripts, and the Hyprland session file (A.3 originally only took bin):
+sudo tar --zstd --acls --xattrs --numeric-owner -cpf \
+  /mnt/backup/cachy-backup/usr-local-$(date +%F).tar.zst -C /usr local
 ```
 
 Then verify the archives are non-truncated before you trust them (see A.6).
@@ -206,6 +207,8 @@ The home archive covers `~/` **only**. Three things on this machine live outside
 3. **`/srv/tftp`** — your TFTP server files (`zImage`, `*.dtb`).
 
 Your compose files and `.env` (in `~/bookorbit`, `~/GitHub/AttendanceSystem`) are already inside the home backup.
+
+> **Flatpak (`/var/lib/flatpak`, ~4.6 GB):** deliberately **not** archived — it's all reinstallable. The app list is in `flatpaks.txt` (Phase B) and reinstalled in **G.4**; the apps' own data lives in `~/.var`, which *is* in the home archive. No action needed.
 
 ```bash
 # Record the docker state for reference
