@@ -11,9 +11,14 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 -- hyprshot
 hl.env("HYPRSHOT_DIR", "/home/aly/Pictures/Screenshots")
 
--- Cursor
-hl.env("XCURSOR_THEME", "BreezeX-RosePineDawn-Linux")
+-- HyprCursor
+hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
+hl.env("HYPRCURSOR_SIZE", "24")
+
+-- XCursor
+hl.env("XCURSOR_THEME", "BreezeX-RosePine-Linux")
 hl.env("XCURSOR_SIZE", "24")
+
 
 -- Wayland 
 hl.env("MOZ_ENABLE_WAYLAND", "1")
