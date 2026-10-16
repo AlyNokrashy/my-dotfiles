@@ -8,14 +8,17 @@ Personal Linux (Hyprland/Wayland) dotfiles. Config only: no build, test, lint, o
 - The zsh config is the **`zsh` stow package** (`.config/zsh`), i.e. `~/.config/zsh -> ~/dotfiles/zsh/.config/zsh`. `ZDOTDIR` is `~/.config/zsh` (set in `/etc/zsh/zshenv`); there is no `~/.zshrc`. The `.zshrc` sources the sibling `*.zsh` files from `$ZDOTDIR`.
 - The `zsh` package's `plugins/` dir is populated automatically at shell start by `_zplugin_load` in `plugins.zsh` (four third-party repos), so it is **gitignored** — never commit it. Re-clone from scratch by deleting `~/.config/zsh/plugins/`.
 - In this checkout the config dirs are already stowed symlinks (`~/.config/<app> -> ~/dotfiles/<app>/.config/<app>`), so repo edits take effect immediately. Re-run `stow` only when adding/removing files or new packages.
-- Root `.gitignore` excludes Noctalia-generated files (`leaf/.config/leaf/noctalia.toml`) and the zsh package's auto-cloned plugins and compinit cache (`zsh/.config/zsh/plugins/`, `zsh/.config/zsh/.zcompdump*`).
+- Root `.gitignore` excludes Noctalia-generated theme outputs — the `leaf` user template (`leaf/.config/leaf/noctalia.toml`) plus the builtin/community outputs (`btop/.config/btop/themes/noctalia.theme`, `hypr/.config/hypr/noctalia.lua`, `kitty/.config/kitty/themes/noctalia.conf`, `fastfetch/.config/fastfetch/themes/noctalia.jsonc`, `yazi/.config/yazi/flavors/noctalia.yazi/{flavor.toml,tmtheme.xml}`) — and the zsh package's auto-cloned plugins and compinit cache (`zsh/.config/zsh/plugins/`, `zsh/.config/zsh/.zcompdump*`). These files still exist on disk (Noctalia rewrites them); they are untracked, not deleted.
 
-## Theming (pywal) — the main cross-cutting concern
+## Theming (Noctalia) — the main cross-cutting concern
 
-- Theme templates live in `wal/.config/wal/templates/`. `wal` renders them into `~/.cache/wal/`, and apps import the **generated cache files** using hardcoded absolute paths (`/home/aly/.cache/wal/...`), not the templates.
-- To change colors: edit the template, then regenerate with `wal -R` (or the external `setwal`). Available placeholders: `{background}`, `{foreground}`, `{cursor}`, `{color0}`..`{color15}`, `{wallpaper}`.
-- Consumers: waybar `style.css` and swaync `style.css` import `colors-waybar.css`; `hypr/modules/appearance.lua` loads `colors-hyprland.lua`; hyprlock sources `colors-hypr.conf`; walker imports `walker-colors.css`; rmpc uses the generated `rmpc.ron`. Some custom templates (e.g. `waybar.css`, `swaync.css`) are rendered but not currently imported — check the consumer before assuming a template is live.
-- Keep the `/home/aly` absolute-path convention when adding imports, and don't hardcode palette colors in app configs.
+- All theming is driven by **Noctalia**; its config is the `noctalia` package (`noctalia/.config/noctalia/`). `theme.toml` sets the mode and the `[theme.templates]` lists (`builtin_ids`, `community_ids`, `user.*`), plus the wallpaper directory; the other `*.toml` files configure the bar, widgets, keybinds, etc.
+- `hypr/.config/hypr/hyprland.lua` calls `require("noctalia").apply_theme()`, and `autostart.lua` launches `noctalia`. On theme/wallpaper change Noctalia renders its **templates** into per-app **outputs**.
+- Outputs that land inside stow packages are generated and gitignored — never edit or commit them: `btop/.config/btop/themes/noctalia.theme`, `hypr/.config/hypr/noctalia.lua`, `kitty/.config/kitty/themes/noctalia.conf`, `fastfetch/.config/fastfetch/themes/noctalia.jsonc`, `yazi/.config/yazi/flavors/noctalia.yazi/{flavor.toml,tmtheme.xml}`. Other outputs (gtk/qt/starship, …) are written straight into `~/.config`/`~/.cache`, outside the repo.
+- Template sources live outside the repo: builtins in `/usr/share/noctalia/assets/templates/`, community templates cached in `~/.local/state/noctalia/community-templates/`. To enable one, add it to `theme.toml` — don't vendor templates here.
+- Apps with no builtin use a **user template** declared in `theme.toml`: `user.leaf` renders `leaf/.config/leaf/noctalia-{dark,light}.toml.template` → `~/.config/leaf/noctalia.toml` (leaf's `theme`), and `user.obsidian_extra` renders `noctalia/.config/noctalia/Obsidian/obsidian.css` → an Obsidian vault snippet. Those `.template`/`.css` inputs **are** tracked; their rendered outputs are not.
+- Apply manually with `noctalia msg templates-apply`. Don't hardcode palette colors in app configs — consume Noctalia's generated output instead.
+- **Legacy (pywal)**: `wal`, `waybar`, `swaync`, and `walker` are still stowed but unused (autostarts commented out in `autostart.lua`). `wal`'s templates (`wal/.config/wal/templates/*`) and the `~/.cache/wal` imports are dead — kept for reference only.
 
 ## Hyprland
 
@@ -30,7 +33,7 @@ Personal Linux (Hyprland/Wayland) dotfiles. Config only: no build, test, lint, o
 
 ## Waybar
 
-- `config.jsonc` + `style.css`.
+- `config.jsonc` + `style.css`. **Legacy** — no longer launched (see Theming); kept for reference.
 
 ## Gotchas
 
