@@ -5,6 +5,8 @@ leaf/.config/leaf/noctalia.toml
 btop/.config/btop/themes/noctalia.theme
 hypr/.config/hypr/noctalia.lua
 kitty/.config/kitty/themes/noctalia.conf
+# starship output (STARSHIP_CONFIG=$ZDOTDIR/starship.toml, inside the zsh package)
+zsh/.config/zsh/starship.toml
 # community template outputs
 fastfetch/.config/fastfetch/themes/noctalia.jsonc
 yazi/.config/yazi/flavors/noctalia.yazi/flavor.toml
