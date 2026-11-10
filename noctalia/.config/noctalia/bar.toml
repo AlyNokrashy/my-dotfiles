@@ -4,11 +4,11 @@ order = [ "default" ]
     [bar.default]
     auto_hide = false
     background_opacity = 0.68000000715255737
-    border = "outline"
+    border = "outline_variant"
     border_width = 0.0
     capsule = false
     capsule_border_width = 1.0
-    capsule_fill = "surface_variant"
+    capsule_fill = "surface_container"
     capsule_group = []
     capsule_opacity = 1.0
     capsule_padding = 6.0
