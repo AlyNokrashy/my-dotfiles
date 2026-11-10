@@ -44,6 +44,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 ---@type table<string, vim.lsp.Config>
 local servers = {
+  bashls = {},
+  yamlls = {
+    settings = { yaml = { schemaStore = { enable = true } } },
+  },
   clangd = {},
   -- gopls = {},
   pyright = {},
@@ -92,12 +96,10 @@ local servers = {
   },
 }
 
-
 require('mason').setup {}
 
 local ensure_installed = vim.tbl_keys(servers or {})
-vim.list_extend(ensure_installed, {
-})
+vim.list_extend(ensure_installed, {})
 
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

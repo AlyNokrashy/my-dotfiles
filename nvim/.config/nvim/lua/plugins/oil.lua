@@ -1,4 +1,0 @@
-require('mini.icons').setup()
-require('oil').setup {}
-
--- vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Oil" })
