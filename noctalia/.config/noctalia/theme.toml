@@ -3,7 +3,7 @@ mode = "auto"
 shell_mode = "auto"
 
     [theme.templates]
-    builtin_ids = [ "hyprland", "cava", "btop", "gtk3", "gtk4", "qt", "kitty", "starship" ]
+    builtin_ids = [ "hyprland", "cava", "btop", "gtk3", "gtk4", "qt", "kitty", "starship", "umbriel" ]
     community_ids = ["steam", "opencode", "zen-browser", "obsidian", "fastfetch", "zathura", "papirus-icons", "lazygit", "yazi"]
     enable_builtin_templates = true
     enable_community_templates = true

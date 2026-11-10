@@ -1,0 +1,128 @@
+[keybinds]
+
+# ------------------------------------------------------------------------------
+# Noctalia shell
+# ------------------------------------------------------------------------------
+
+"Mod+D" = { action = "spawn noctalia msg panel-toggle launcher", repeat = false }
+"Mod+S" = { action = "spawn noctalia msg panel-toggle control-center", repeat = false }
+"Mod+Comma" = { action = "spawn noctalia msg settings-toggle", repeat = false }
+"Mod+W" = { action = "spawn noctalia msg panel-toggle wallpaper", repeat = false }
+"Mod+Shift+W" = { action = "spawn noctalia msg panel-toggle noctalia/wallhaven:browser", repeat = false }
+"Mod+Shift+Q" = { action = "spawn noctalia msg panel-toggle session", repeat = false }
+"Mod+Shift+S" = { action = "spawn noctalia msg screenshot-region", repeat = false }
+"Mod+Period" = { action = "spawn noctalia msg panel-toggle clipboard", repeat = false }
+"Mod+A" = { action = "spawn noctalia msg panel-toggle control-center notifications", repeat = false }
+
+# Alt+Tab opens Noctalia's window switcher. Hold Alt and tap Tab to step through
+# the list; releasing Alt focuses the selection. A quick tap switches to the
+# previous window. Shift+Tab opens the switcher one step backward.
+"Alt+Tab" = { action = "spawn noctalia msg window-switcher hold", repeat = false }
+"Alt+Shift+Tab" = { action = "spawn noctalia msg window-switcher hold reverse", repeat = false }
+
+# ------------------------------------------------------------------------------
+# Media and brightness
+# Routed through Noctalia so its OSDs show. Safe while the session is locked.
+# ------------------------------------------------------------------------------
+
+# allow_when_inhibited keeps them working even when an app has requested
+# keyboard shortcuts passthrough (games, remote desktop, or the manual toggle).
+"XF86AudioRaiseVolume" = { action = "spawn noctalia msg volume-up", allow_when_locked = true, allow_when_inhibited = true }
+"XF86AudioLowerVolume" = { action = "spawn noctalia msg volume-down", allow_when_locked = true, allow_when_inhibited = true }
+"XF86AudioMute" = { action = "spawn noctalia msg volume-mute", allow_when_locked = true, allow_when_inhibited = true, repeat = false }
+"XF86MonBrightnessUp" = { action = "spawn noctalia msg brightness-up", allow_when_locked = true, allow_when_inhibited = true }
+"XF86MonBrightnessDown" = { action = "spawn noctalia msg brightness-down", allow_when_locked = true, allow_when_inhibited = true }
+
+# ------------------------------------------------------------------------------
+# Session and reload
+# ------------------------------------------------------------------------------
+
+# Hyprland: hyprctl reload. Umbriel's equivalent is config-reload.
+"Mod+Shift+R" = { action = "config-reload", repeat = false }
+
+# Hyprland: SUPER+SHIFT+ESCAPE = exit. Kept.
+"Mod+Shift+Escape" = { action = "session-quit", repeat = false }
+
+# Umbriel recommends one shortcuts-inhibition escape hatch. Your original
+# config did not bind it; added here so it does not collide with session-quit.
+"Mod+Ctrl+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
+
+# ------------------------------------------------------------------------------
+# Applications
+# ------------------------------------------------------------------------------
+
+"Mod+Return" = { action = "spawn kitty", repeat = false }                          # Terminal = kitty
+"Mod+Q" = { action = "window-close", repeat = false }                             # Kill focused app
+"Mod+E" = { action = "spawn kitty -e yazi", repeat = false }                      # FileManager
+"Mod+Z" = { action = "spawn zen-browser", repeat = false }
+"Mod+B" = { action = "spawn helium-browser", repeat = false }
+# "Mod+R" = { action = "spawn readest", repeat = false }
+
+# ------------------------------------------------------------------------------
+# Window state
+# ------------------------------------------------------------------------------
+
+"Mod+T" = { action = "window-toggle-floating", repeat = false }
+"Mod+F" = { action = "window-toggle-fullscreen", repeat = false }
+"Mod+M" = { action = "window-toggle-maximize-to-edges", repeat = false }
+"Mod+O" = { action = "overview-toggle", repeat = false }
+
+# ------------------------------------------------------------------------------
+# Workspaces
+# ------------------------------------------------------------------------------
+
+# Numbered 1-3 on HDMI-A-1 and 4-6 on eDP-1. Use --name because these are
+# explicit names, not anonymous positions, and the names are numeric.
+"Mod+1" = "workspace-switch --name 1"
+"Mod+2" = "workspace-switch --name 2"
+"Mod+3" = "workspace-switch --name 3"
+"Mod+4" = "workspace-switch --name 4"
+"Mod+5" = "workspace-switch --name 5"
+"Mod+6" = "workspace-switch --name 6"
+
+"Mod+Shift+1" = "window-move-to-workspace --name 1"
+"Mod+Shift+2" = "window-move-to-workspace --name 2"
+"Mod+Shift+3" = "window-move-to-workspace --name 3"
+"Mod+Shift+4" = "window-move-to-workspace --name 4"
+"Mod+Shift+5" = "window-move-to-workspace --name 5"
+"Mod+Shift+6" = "window-move-to-workspace --name 6"
+
+# ------------------------------------------------------------------------------
+# Focus
+# ------------------------------------------------------------------------------
+
+"Mod+H" = "window-focus-left"
+"Mod+L" = "window-focus-right"
+"Mod+K" = "window-focus-up"
+"Mod+J" = "window-focus-down"
+
+# Switch focus between screens.
+"Mod+Alt+H" = "output-focus-left"
+"Mod+Alt+L" = "output-focus-right"
+
+# ------------------------------------------------------------------------------
+# Move windows / columns
+# In the scrolling layout Shift+H/L move whole columns, Shift+J/K move windows
+# within their column, matching Umbriel's defaults.
+# ------------------------------------------------------------------------------
+
+"Mod+Shift+H" = "column-move-left"
+"Mod+Shift+L" = "column-move-right"
+"Mod+Shift+K" = "window-move-up"
+"Mod+Shift+J" = "window-move-down"
+
+# Hyprland: SUPER+CTRL+H/L = workspace e-1 / e+1.
+"Mod+Ctrl+H" = "workspace-previous"
+"Mod+Ctrl+L" = "workspace-next"
+
+# Hyprland double-tap SUPER_L = `layout colresize +conf`.
+# Umbriel has no double-tap binds. These are the documented single-key resize
+# alternatives; uncomment if you want them.
+"Mod+Equal" = "window-modify-primary-extent +0.02"
+"Mod+Minus" = "window-modify-primary-extent -0.02"
+
+"Mod+R" = { action = "window-cycle-primary-extent", repeat = false }
+"Mod+Ctrl+R" = { action = "window-cycle-primary-extent-back", repeat = false }
+# "Mod+Ctrl+Equal" = "window-modify-secondary-extent +0.02"
+# "Mod+Ctrl+Minus" = "window-modify-secondary-extent -0.02"
+
