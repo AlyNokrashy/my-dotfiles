@@ -1,5 +1,5 @@
 alias c="clear"
-alias v="nvim"
+alias vim="nvim"
 alias tux="tuxedo"
 alias steam="prime-run steam"
 # alias cp="/usr/local/bin/advcp -g"

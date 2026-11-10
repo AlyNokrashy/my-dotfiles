@@ -25,12 +25,17 @@ export GPG_TTY=$(tty)
 export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
 
 # ---------- PATH ----------
-# Personal binaries/scripts
-export PATH="$HOME/.local/bin:$PATH"
+# $path (array) is tied to $PATH (string); -U drops duplicate entries
+typeset -U path
+
+# ~/.local/bin first so personal scripts win over cargo-installed binaries
+path=(
+  "$HOME/.local/bin"
+  "$HOME/.cargo/bin"
+  $path
+)
+export PATH
 
 # ---------- QT ----------
 export QT_QPA_PLATFORMTHEME=qt6ct
 
-# NOTE: the leaf completion (_leaf) is sourced in .zshrc *after* compinit.
-# Sourcing it here fails with "command not found: compdef" because the
-# completion system is not initialized in .zshenv.
