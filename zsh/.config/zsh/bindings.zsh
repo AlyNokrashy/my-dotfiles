@@ -2,14 +2,10 @@
 # Keybindings
 # =========================================================
 
-# Vi-style keymaps: the line editor starts in insert mode and Esc enters
-# normal mode. Must come before the bindings below, which are made without
-# -M and therefore land in the active (insert) keymap.
-bindkey -v
-
-# Esc -> normal mode is subject to this delay (hundredths of a second).
-# zsh's default is 40 (0.4s), which makes Esc feel laggy in vi mode.
-KEYTIMEOUT=10
+# Emacs-style keymaps. Selected explicitly because this zsh otherwise starts
+# with 'main' linked to viins, i.e. vi editing on by default. Must come before
+# the bindings below, which are made without -M and land in the active keymap.
+bindkey -e
 
 # Ctrl+Right -> move forward one word (^[[1;5C is the terminal escape code)
 bindkey '^[[1;5C' forward-word
@@ -23,6 +19,4 @@ bindkey '^F' _fzf_file_no_hidden
 # Ctrl+\ -> toggle autosuggestions (useful for screen recordings)
 bindkey '^\' autosuggest-toggle
 
-# History search is atuin's job (^R in insert mode, Up by default). fzf's
-# key-bindings.zsh also binds ^R in vi normal mode; restore zsh's redo there.
-bindkey -M vicmd '^R' redo
+# History search is atuin's job (^R, Up by default).
