@@ -93,8 +93,8 @@
 
 "Mod+H" = "window-focus-left"
 "Mod+L" = "window-focus-right"
-"Mod+K" = "window-focus-up"
-"Mod+J" = "window-focus-down"
+"Mod+K" = "workspace-previous"
+"Mod+J" = "workspace-next"
 
 # Switch focus between screens.
 "Mod+Alt+H" = "output-focus-left"
@@ -111,9 +111,9 @@
 "Mod+Shift+K" = "window-move-up"
 "Mod+Shift+J" = "window-move-down"
 
-# Hyprland: SUPER+CTRL+H/L = workspace e-1 / e+1.
-"Mod+Ctrl+H" = "workspace-previous"
-"Mod+Ctrl+L" = "workspace-next"
+# # Hyprland: SUPER+CTRL+H/L = workspace e-1 / e+1.
+# "Mod+Ctrl+H" = "workspace-previous"
+# "Mod+Ctrl+L" = "workspace-next"
 
 # Hyprland double-tap SUPER_L = `layout colresize +conf`.
 # Umbriel has no double-tap binds. These are the documented single-key resize
