@@ -102,6 +102,9 @@ brightness = 0.8
 contrast = 0.9
 saturation = 1.1
 
+[appearance.shadow]
+enabled = false
+
 # ==============================================================================
 # Effects
 # Every effect is off until a preset is selected; border and window effects
@@ -163,14 +166,14 @@ natural_scroll = true
 # Hyprland cursor:no_hardware_cursors, plus the XCursor theme/size from env.lua.
 #
 [input.cursor]
-hardware_cursor = false
+hardware_cursor = true
 theme = "BreezeX-RosePine-Linux"
 size = 24
 
 # Focus can follow the pointer across tiled, floating, and pinned windows.
 #
 [input.focus]
-follows_mouse = true
+follows_mouse = "always"
 # hover_raises = false # Hover focuses only; clicks and keybinds raise.
 
 # Confine touch input to one display.
