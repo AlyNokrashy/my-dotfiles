@@ -3,10 +3,10 @@
  function M.setup()
    require('base16-colorscheme').setup {
      -- Background tones
-     base00 = '#191724', -- Default Background
-     base01 = '#26233a', -- Lighter Background (status bars)
-     base02 = '#2e2b47', -- Selection Background
-     base03 = '#656278', -- Comments, Invisibles
+     base00 = '#232136', -- Default Background
+     base01 = '#393552', -- Lighter Background (status bars)
+     base02 = '#423d5e', -- Selection Background
+     base03 = '#6c6a85', -- Comments, Invisibles
      -- Foreground tones
      base04 = '#908caa', -- Dark Foreground (status bars)
      base05 = '#e0def4', -- Default Foreground
@@ -14,13 +14,13 @@
      base07 = '#e0def4', -- Lightest Foreground
      -- Accent colors
      base08 = '#eb6f92', -- Variables, XML Tags, Errors
-     base09 = '#31748f', -- Integers, Constants
+     base09 = '#32758f', -- Integers, Constants
      base0A = '#9ccfd8', -- Classes, Search Background
-     base0B = '#ebbcba', -- Strings, Diff Inserted
-     base0C = '#96d1e9', -- Regex, Escape Chars
-     base0D = '#e99996', -- Functions, Methods
+     base0B = '#ea9a97', -- Strings, Diff Inserted
+     base0C = '#96d2e9', -- Regex, Escape Chars
+     base0D = '#ea9895', -- Functions, Methods
      base0E = '#96dce9', -- Keywords, Storage
-     base0F = '#583145', -- Deprecated, Embedded Tags
+     base0F = '#5f3851', -- Deprecated, Embedded Tags
    }
  end
 
