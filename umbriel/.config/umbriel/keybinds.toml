@@ -71,7 +71,7 @@
 # Workspaces
 # ------------------------------------------------------------------------------
 
-# Numbered 1-3 on HDMI-A-1 and 4-6 on eDP-1. Use --name because these are
+# Numbered 1-3 on HDMI-A-1 and 4-7 on eDP-1. Use --name because these are
 # explicit names, not anonymous positions, and the names are numeric.
 "Mod+1" = "workspace-switch --name 1"
 "Mod+2" = "workspace-switch --name 2"
